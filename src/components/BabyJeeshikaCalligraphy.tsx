@@ -97,7 +97,7 @@ export const BabyJeeshikaCalligraphy: React.FC<BabyJeeshikaCalligraphyProps> = (
             background: "linear-gradient(180deg, #8A1E3D 0%, #5E0E22 55%, #831843 100%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
-            textShadow: "0 2px 4px rgba(212,175,55,0.4), 0 1px 2px rgba(255,255,255,0.9)",
+            filter: "drop-shadow(0 1px 2px rgba(255,255,255,0.95)) drop-shadow(0 2px 5px rgba(212,175,55,0.45))",
             letterSpacing: "normal",
           }}
         >
