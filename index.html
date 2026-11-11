@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>Baby Jeeshika | Ear Piercing Ceremony (செவிப்பொன் சேர்ப்பு விழா)</title>
 
-  <!-- Google Fonts: English Serif & Script Only -->
+  <!-- Google Fonts: English Serif & Script + Tamil Anek Tamil & Noto Sans Tamil -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400;1,600&family=Great+Vibes&family=Pinyon+Script&family=Parisienne&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anek+Tamil:wdth,wght@100..125,700;100..125,800&family=Anek+Tamil:wght@700;800&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400;1,600&family=Great+Vibes&family=Pinyon+Script&family=Parisienne&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
 
   <!-- Dedicated Global Tamil Font System (Base64 Inlined + Local TTF) -->
   <link rel="stylesheet" href="tamil-fonts.css">
@@ -51,8 +51,8 @@
       --metallic-gold: #C9A34E;
       --warm-ivory: #FFF8F0;
       --maroon-royal: #6B1D2F;
-      --ceremony-title-font: 'JeeshikaNilavu', 'JeeshikaTamil', sans-serif;
-      --baby-name-tamil-font: 'JeeshikaMarutham', 'JeeshikaTamil', sans-serif;
+      --ceremony-title-font: 'JeeshikaNilavu', 'Anek Tamil', 'JeeshikaTamil', sans-serif;
+      --baby-name-tamil-font: 'Anek Tamil', 'JeeshikaMarutham', 'JeeshikaTamil', sans-serif;
     }
 
     * {
@@ -64,8 +64,8 @@
     body {
       margin: 0;
       padding: 0;
-      font-family: 'JeeshikaTamil', sans-serif;
-      background: radial-gradient(circle at 50% 20%, #200a16 0%, #0d040a 100%);
+      font-family: 'Noto Sans Tamil', 'JeeshikaTamil', sans-serif;
+      background: linear-gradient(180deg, #FDF0F3 0%, #FAF3F5 50%, #F5E6EB 100%);
       color: #333;
       overflow-x: hidden;
       min-height: 100vh;
@@ -95,13 +95,14 @@
       font-family: 'Playfair Display', Georgia, serif;
     }
 
-    /* CRITICAL GLOBAL TAMIL TYPOGRAPHY: JeeshikaTamil (TAU-Ezhil), ZERO tracking, ZERO uppercase */
+    /* CRITICAL GLOBAL TAMIL TYPOGRAPHY: Noto Sans Tamil & JeeshikaTamil, ZERO tracking, ZERO uppercase */
     .font-tamil,
     .font-tamil-serif,
     .font-tamil-sans,
     .font-tamil-body,
+    .font-tamil-supporting,
     [lang="ta"] {
-      font-family: 'JeeshikaTamil', sans-serif !important;
+      font-family: 'Noto Sans Tamil', 'JeeshikaTamil', sans-serif !important;
       letter-spacing: normal !important;
       word-spacing: normal !important;
       text-transform: none !important;
@@ -120,10 +121,13 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* BABY NAME FONT: Marutham (Cinematic Monumental Bold) */
+    /* BABY NAME FONT: Google Fonts Anek Tamil Expanded ExtraBold 800 */
     .font-tamil-names,
     .font-baby-tamil {
-      font-family: var(--baby-name-tamil-font, 'JeeshikaMarutham', sans-serif) !important;
+      font-family: 'Anek Tamil', 'JeeshikaMarutham', 'JeeshikaTamil', sans-serif !important;
+      font-weight: 800 !important;
+      font-stretch: 125% !important;
+      font-variation-settings: 'wdth' 125, 'wght' 800 !important;
       letter-spacing: normal !important;
       word-spacing: normal !important;
       text-transform: none !important;
@@ -158,8 +162,8 @@
         max-height: 920px;
         aspect-ratio: 9 / 16;
         border-radius: 38px;
-        box-shadow: 0 25px 70px -10px rgba(0, 0, 0, 0.85), 0 0 45px rgba(212, 175, 55, 0.35);
-        border: 4.5px solid rgba(212, 175, 55, 0.65);
+        box-shadow: 0 16px 48px rgba(107, 29, 47, 0.12), 0 0 24px rgba(212, 175, 55, 0.22);
+        border: 4px solid rgba(212, 175, 55, 0.65);
       }
     }
 
@@ -171,7 +175,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #0d040a;
+      background: linear-gradient(180deg, #FDF0F3 0%, #FAF3F5 50%, #F5E6EB 100%);
       transition: opacity 1000ms ease;
     }
 
@@ -181,7 +185,7 @@
       max-width: 430px;
       position: relative;
       overflow: hidden;
-      background: #000;
+      background: #FFF8F0;
     }
 
     @media (min-width: 641px) {
@@ -190,7 +194,7 @@
         max-height: 920px;
         aspect-ratio: 9 / 16;
         border-radius: 38px;
-        border: 4.5px solid rgba(212, 175, 55, 0.65);
+        border: 4px solid rgba(212, 175, 55, 0.65);
       }
     }
 
@@ -448,12 +452,15 @@
           எங்கள் அன்பு மகள்
         </p>
 
-        <!-- Baby's name: பேபி. ஜீஷிகா & Baby Jeeshika - Enhanced Luxury Typography -->
+        <!-- Baby's name: பேபி. ஜீஷிகா (Google Fonts Anek Tamil Expanded ExtraBold 800) & Baby Jeeshika -->
         <div class="my-2 text-center">
-          <h2 class="text-4xl md:text-5xl font-tamil-names font-bold text-[#9D174D] drop-shadow-[0_2px_4px_rgba(255,255,255,0.95)] leading-tight">
+          <h2 
+            class="text-5xl sm:text-6xl md:text-6xl font-extrabold text-[#8A1E3D] leading-tight font-baby-tamil tracking-normal select-none"
+            style="font-family: 'Anek Tamil', 'JeeshikaMarutham', 'JeeshikaTamil', sans-serif; font-weight: 800; font-stretch: 125%; font-variation-settings: 'wdth' 125, 'wght' 800; text-shadow: 0 2px 4px rgba(212,175,55,0.4), 0 1px 2px rgba(255,255,255,0.9); letter-spacing: normal;"
+          >
             பேபி. ஜீஷிகா
           </h2>
-          <span class="text-4xl md:text-5xl font-script text-[#6B1D2F] font-bold block mt-1 drop-shadow-sm tracking-wide">
+          <span class="text-4xl sm:text-5xl md:text-5xl font-script text-[#6B1D2F] font-bold block mt-1 drop-shadow-sm tracking-wide">
             Baby Jeeshika
           </span>
         </div>

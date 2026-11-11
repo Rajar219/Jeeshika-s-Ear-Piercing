@@ -46,10 +46,10 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-[#0d040a] flex items-center justify-center p-0 md:py-8">
+    <main className="min-h-screen bg-gradient-to-b from-[#FDF0F3] via-[#FAF3F5] to-[#F5E6EB] flex items-center justify-center p-0 md:py-8">
       
       {/* Centered 9:16 Mobile Portrait Showcase Frame on Desktop / Full Screen on Mobile */}
-      <div className="relative w-full h-full max-w-[430px] min-h-screen md:min-h-[880px] md:max-h-[92vh] md:aspect-[9/16] bg-[#FFF8F0] md:rounded-[36px] md:border-4 md:border-[#D4AF37]/65 shadow-[0_25px_60px_-10px_rgba(0,0,0,0.8),0_0_40px_rgba(212,175,55,0.3)] overflow-x-hidden overflow-y-auto scroll-smooth">
+      <div className="relative w-full h-full max-w-[430px] min-h-screen md:min-h-[880px] md:max-h-[92vh] md:aspect-[9/16] bg-[#FFF8F0] md:rounded-[36px] md:border-4 md:border-[#D4AF37]/65 shadow-[0_16px_48px_rgba(107,29,47,0.12),0_0_24px_rgba(212,175,55,0.22)] overflow-x-hidden overflow-y-auto scroll-smooth">
         
         {/* Floating Ambient Particle Canvas */}
         <ParticleCanvas />

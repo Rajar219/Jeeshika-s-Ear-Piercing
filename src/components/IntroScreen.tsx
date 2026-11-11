@@ -134,11 +134,11 @@ export const IntroScreen: React.FC<IntroScreenProps> = ({ onComplete, onTransiti
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center bg-[#0d040a] transition-opacity duration-1000 ${videoFading ? "opacity-0 pointer-events-none" : "opacity-100"
+      className={`fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-b from-[#FDF0F3] via-[#FAF3F5] to-[#F5E6EB] transition-opacity duration-1000 ${videoFading ? "opacity-0 pointer-events-none" : "opacity-100"
         }`}
     >
       {/* 9:16 Video Container */}
-      <div className="relative w-full h-full max-w-[430px] aspect-[9/16] overflow-hidden bg-black shadow-2xl md:rounded-[36px] md:border-4 md:border-[#D4AF37]/60">
+      <div className="relative w-full h-full max-w-[430px] aspect-[9/16] overflow-hidden bg-[#FFF8F0] shadow-[0_16px_48px_rgba(107,29,47,0.12),0_0_24px_rgba(212,175,55,0.22)] md:rounded-[36px] md:border-4 md:border-[#D4AF37]/60">
 
         {/* Intro Video */}
         <video
@@ -187,7 +187,7 @@ export const IntroScreen: React.FC<IntroScreenProps> = ({ onComplete, onTransiti
             </div>
 
             {/* Elegant "TAP TO OPEN" Badge */}
-            <div className="mt-3.5 bg-[#6B1D2F]/90 backdrop-blur-md border border-[#D4AF37] text-[#FFF8E7] text-xs font-tamil font-bold px-4 py-1.5 rounded-full shadow-[0_4px_16px_rgba(0,0,0,0.4)] whitespace-nowrap animate-bounce">
+            <div className="mt-3.5 bg-[#6B1D2F]/90 backdrop-blur-md border border-[#D4AF37] text-[#FFF8E7] text-xs font-tamil font-bold px-4 py-1.5 rounded-full shadow-[0_4px_16px_rgba(107,29,47,0.35)] whitespace-nowrap animate-bounce">
               ✨ சீலைத் திறக்க தட்டவும் • TAP TO OPEN
             </div>
           </div>

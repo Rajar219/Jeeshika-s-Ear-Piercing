@@ -1,5 +1,5 @@
 @import "./tamil-fonts.css";
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400;1,600&family=Great+Vibes&family=Pinyon+Script&family=Parisienne&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anek+Tamil:wdth,wght@100..125,700;100..125,800&family=Anek+Tamil:wght@700;800&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400;1,600&family=Great+Vibes&family=Pinyon+Script&family=Parisienne&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -16,9 +16,10 @@
   --font-playfair: 'Playfair Display', Georgia, serif;
   --font-great-vibes: 'Great Vibes', cursive;
   --font-pinyon: 'Pinyon Script', cursive;
-  --font-tamil: 'JeeshikaTamil', sans-serif;
-  --ceremony-title-font: 'JeeshikaNilavu', 'JeeshikaTamil', sans-serif;
-  --baby-name-tamil-font: 'JeeshikaMarutham', 'JeeshikaTamil', sans-serif;
+  --font-tamil: 'Noto Sans Tamil', 'JeeshikaTamil', sans-serif;
+  --font-tamil-supporting: 'Noto Sans Tamil', 'JeeshikaTamil', sans-serif;
+  --ceremony-title-font: 'JeeshikaNilavu', 'Anek Tamil', 'JeeshikaTamil', sans-serif;
+  --baby-name-tamil-font: 'Anek Tamil', 'JeeshikaMarutham', 'JeeshikaTamil', sans-serif;
   --baby-name-en-font: 'Great Vibes', cursive;
 }
 
@@ -31,12 +32,12 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  font-family: 'JeeshikaTamil', sans-serif;
+  font-family: 'Noto Sans Tamil', 'JeeshikaTamil', sans-serif;
 }
 
 /* ========================================================
    CRITICAL GLOBAL TAMIL TYPOGRAPHY RULES
-   - Dedicated global font: JeeshikaTamil (TAU-Ezhil)
+   - Dedicated global font: Noto Sans Tamil & JeeshikaTamil
    - Zero tracking / normal letter-spacing (prevents broken vowel marks)
    - Zero uppercase transformation (preserves complex Indic syllables)
    - Natural word spacing and balanced line height
@@ -45,9 +46,10 @@ body {
 .font-tamil-serif,
 .font-tamil-sans,
 .font-tamil-body,
+.font-tamil-supporting,
 [lang="ta"],
 .tamil-text {
-  font-family: 'JeeshikaTamil', sans-serif !important;
+  font-family: 'Noto Sans Tamil', 'JeeshikaTamil', sans-serif !important;
   letter-spacing: normal !important;
   word-spacing: normal !important;
   text-transform: none !important;
@@ -66,10 +68,13 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* BABY NAME FONTS: Marutham (Cinematic Monumental Title) for Tamil, Luxury Calligraphic Script for English */
+/* BABY NAME FONTS: Google Fonts Anek Tamil (Expanded ExtraBold / 800) for Tamil, Luxury Calligraphic Script for English */
 .font-tamil-names,
 .font-baby-tamil {
-  font-family: var(--baby-name-tamil-font, 'JeeshikaMarutham', sans-serif) !important;
+  font-family: 'Anek Tamil', 'JeeshikaMarutham', 'JeeshikaTamil', sans-serif !important;
+  font-weight: 800 !important;
+  font-stretch: 125% !important;
+  font-variation-settings: 'wdth' 125, 'wght' 800 !important;
   letter-spacing: normal !important;
   word-spacing: normal !important;
   text-transform: none !important;
