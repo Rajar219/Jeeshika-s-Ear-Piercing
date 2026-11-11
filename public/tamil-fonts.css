@@ -91,7 +91,7 @@
 
 :root {
   --ceremony-title-font: 'JeeshikaNilavu', 'JeeshikaTamil', sans-serif;
-  --baby-name-tamil-font: 'JeeshikaKurinji', 'JeeshikaTamil', sans-serif;
+  --baby-name-tamil-font: 'JeeshikaMarutham', 'JeeshikaTamil', sans-serif;
 }
 
 /* CRITICAL: Enforce Natural Letter Spacing & Zero Uppercase on Tamil Text */
@@ -148,7 +148,7 @@
 }
 
 .font-tamil-names, .font-baby-tamil {
-  font-family: var(--baby-name-tamil-font, 'JeeshikaKurinji', sans-serif) !important;
+  font-family: var(--baby-name-tamil-font, 'JeeshikaMarutham', sans-serif) !important;
   letter-spacing: normal !important;
   text-transform: none !important;
   font-feature-settings: "tml2" 1, "taml" 1, "abvs" 1, "psts" 1, "akhn" 1, "haln" 1 !important;

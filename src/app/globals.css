@@ -18,7 +18,7 @@
   --font-pinyon: 'Pinyon Script', cursive;
   --font-tamil: 'JeeshikaTamil', sans-serif;
   --ceremony-title-font: 'JeeshikaNilavu', 'JeeshikaTamil', sans-serif;
-  --baby-name-tamil-font: 'JeeshikaKurinji', 'JeeshikaTamil', sans-serif;
+  --baby-name-tamil-font: 'JeeshikaMarutham', 'JeeshikaTamil', sans-serif;
   --baby-name-en-font: 'Great Vibes', cursive;
 }
 
@@ -66,10 +66,10 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* BABY NAME FONTS: Nilavu for Tamil, Luxury Calligraphic Script for English */
+/* BABY NAME FONTS: Marutham (Cinematic Monumental Title) for Tamil, Luxury Calligraphic Script for English */
 .font-tamil-names,
 .font-baby-tamil {
-  font-family: var(--baby-name-tamil-font, 'JeeshikaKurinji', sans-serif) !important;
+  font-family: var(--baby-name-tamil-font, 'JeeshikaMarutham', sans-serif) !important;
   letter-spacing: normal !important;
   word-spacing: normal !important;
   text-transform: none !important;
