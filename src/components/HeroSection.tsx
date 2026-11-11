@@ -103,13 +103,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ active = true }) => {
           {INVITATION_CONFIG.baby.tamilTitle}
         </h1>
 
-        {/* English Subtitle: EAR PIERCING CEREMONY */}
-        <p className="text-xs font-serif font-bold tracking-[0.25em] text-[#9B3459] uppercase mt-0.5">
-          {INVITATION_CONFIG.baby.title}
-        </p>
-
         {/* Supporting text: எங்கள் அன்பு மகள் */}
-        <p className="text-xs font-tamil font-bold text-[#7A2638] mt-3">
+        <p className="text-xs font-tamil font-bold text-[#7A2638] mt-2.5">
           {INVITATION_CONFIG.baby.tamilSubtitle}
         </p>
 
