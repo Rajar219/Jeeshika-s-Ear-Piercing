@@ -2,8 +2,14 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Baby Jeeshika | Ear Piercing Ceremony (செவிப்பொன் சேர்ப்பு விழா)",
-  description: "அன்புடன் அழைக்கின்றோம் - எங்கள் அன்பு மகள் பேபி. ஜீஷிகாவின் செவிப்பொன் சேர்ப்பு விழா (Baby Jeeshika Ear Piercing Ceremony) சுபமுகூர்த்த அழைப்பிதழ்.",
+  title: "பேபி. ஜீஷிகா | செவிப்பொன் விழா",
+  description: "அன்புடன் அழைக்கின்றோம் - எங்கள் அன்பு மகள் பேபி. ஜீஷிகாவின் செவிப்பொன் சேர்ப்பு விழா சுபமுகூர்த்த அழைப்பிதழ்.",
+  openGraph: {
+    title: "பேபி. ஜீஷிகா | செவிப்பொன் விழா",
+    description: "அன்புடன் அழைக்கின்றோம் - எங்கள் அன்பு மகள் பேபி. ஜீஷிகாவின் செவிப்பொன் சேர்ப்பு விழா சுபமுகூர்த்த அழைப்பிதழ்.",
+    locale: "ta_IN",
+    type: "website",
+  },
 };
 
 export const viewport: Viewport = {

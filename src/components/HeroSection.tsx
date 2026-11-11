@@ -3,6 +3,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { INVITATION_CONFIG } from "@/config/invitation";
 import { FloralHeaderDivider } from "@/components/FloralDecorations";
+import { BabyJeeshikaCalligraphy } from "@/components/BabyJeeshikaCalligraphy";
 
 interface HeroSectionProps {
   active?: boolean;
@@ -100,8 +101,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ active = true }) => {
           preload={active ? "auto" : "metadata"}
           className="w-full h-full object-cover object-bottom"
         />
-        {/* Soft Pink Atmospheric Overlay for Even, Bright Lighting without dark shadows */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#FFF5F7] via-[#FFF5F7]/70 to-transparent h-[60%] pointer-events-none" />
+        {/* Bright Soft Pink Atmospheric Illumination — 100% Free of Dark Shadows or Vignettes */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#FFF5F7] via-[#FFF5F7]/80 to-transparent h-[62%] pointer-events-none" />
         <div className="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-[#FCE8ED] to-transparent pointer-events-none" />
       </div>
 
@@ -110,14 +111,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ active = true }) => {
         
         {/* Small Top Heading: அன்புடன் அழைக்கின்றோம் (Noto Sans Tamil 600, ZERO tracking) */}
         <div 
-          className="inline-block bg-gradient-to-r from-[#6B1D2F] via-[#8A263E] to-[#6B1D2F] text-[#FFF8E7] border-2 border-[#D4AF37] px-5 py-1 rounded-full shadow-md text-xs font-semibold mb-2"
+          className="inline-block bg-gradient-to-r from-[#6B1D2F] via-[#8A263E] to-[#6B1D2F] text-[#FFF8E7] border-2 border-[#D4AF37] px-5 py-1 rounded-full shadow-[0_2px_10px_rgba(212,175,55,0.3)] text-xs font-semibold mb-2"
           style={{ fontFamily: "'Noto Sans Tamil', 'JeeshikaTamil', sans-serif", fontWeight: 600, letterSpacing: "normal" }}
         >
           {INVITATION_CONFIG.baby.tamilBadge}
         </div>
 
         {/* Main Title: செவிப்பொன் சேர்ப்பு விழா (Dedicated Nilavu Display Title Font) */}
-        <h1 className="text-3xl md:text-4xl font-tamil-title font-bold text-[#6B1D2F] drop-shadow-[0_2px_4px_rgba(212,175,55,0.45)] leading-tight my-1">
+        <h1 className="text-3xl md:text-4xl font-tamil-title font-bold text-[#6B1D2F] drop-shadow-[0_2px_4px_rgba(212,175,55,0.4)] leading-tight my-1">
           {INVITATION_CONFIG.baby.tamilTitle}
         </h1>
 
@@ -129,31 +130,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ active = true }) => {
           {INVITATION_CONFIG.baby.tamilSubtitle}
         </p>
 
-        {/* Baby's Name: பேபி. ஜீஷிகா (Google Fonts Anek Tamil Expanded ExtraBold 800) & Baby Jeeshika */}
-        <div className="my-2 text-center">
-          <h2 
-            className="text-5xl sm:text-6xl md:text-6xl font-extrabold text-[#8A1E3D] leading-tight font-baby-tamil tracking-normal select-none"
-            style={{
-              fontFamily: "'Anek Tamil', 'JeeshikaMarutham', 'JeeshikaTamil', sans-serif",
-              fontWeight: 800,
-              fontStretch: "125%",
-              fontVariationSettings: "'wdth' 125, 'wght' 800",
-              textShadow: "0 2px 4px rgba(212,175,55,0.4), 0 1px 2px rgba(255,255,255,0.9)",
-              letterSpacing: "normal",
-            }}
-          >
-            {INVITATION_CONFIG.baby.tamilName}
-          </h2>
-          <span className="text-4xl sm:text-5xl md:text-5xl font-script text-[#6B1D2F] font-bold block mt-1 drop-shadow-sm tracking-wide">
-            {INVITATION_CONFIG.baby.name}
-          </span>
-        </div>
+        {/* Premium Tamil Calligraphy Logo Treatment: பேபி. ஜீஷிகா (Inspired by Behance Reference) */}
+        <BabyJeeshikaCalligraphy className="my-1.5" />
 
         {/* Refined Botanical Floral Divider */}
         <FloralHeaderDivider className="my-2" />
 
         {/* Warm Supporting Message (Noto Sans Tamil 500) */}
-        <div className="bg-gradient-to-r from-[#FFF5F7]/95 via-white to-[#FFF5F7]/95 border border-[#D4AF37]/55 rounded-2xl px-4 py-3 shadow-sm mt-1">
+        <div className="bg-gradient-to-r from-white/95 via-[#FFF8FA]/95 to-white/95 border border-[#D4AF37]/45 rounded-2xl px-4 py-3 shadow-[0_4px_16px_rgba(212,175,55,0.1)] mt-1">
           <p 
             className="text-xs md:text-[13px] font-medium text-[#521120] leading-relaxed"
             style={{ fontFamily: "'Noto Sans Tamil', 'JeeshikaTamil', sans-serif", fontWeight: 500, letterSpacing: "normal" }}
