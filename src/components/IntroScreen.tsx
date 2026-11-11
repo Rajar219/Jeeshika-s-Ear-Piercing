@@ -74,12 +74,12 @@ export const IntroScreen: React.FC<IntroScreenProps> = ({ onComplete, onTransiti
   };
 
   const triggerFlashAndComplete = () => {
-    // 1. Smoothly crossfade: fade out Audio 1 over 1800ms
+    // 1. Smoothly fade out Audio 1 over 1000ms
     const audio1 = audio1Ref.current;
     if (audio1) {
       const initialVol = audio1.volume;
-      const steps = 30;
-      const stepTime = 60; // 1800ms total
+      const steps = 20;
+      const stepTime = 50; // 1000ms total fade-out
       let step = 0;
       fadeOutTimerRef.current = setInterval(() => {
         step++;

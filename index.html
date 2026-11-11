@@ -415,15 +415,17 @@
       <!-- Baby Jeeshika Video as Main Hero Visual Element -->
       <div class="absolute inset-0 z-0">
         <video 
+          id="heroVideo"
           src="watermark removed baby scene.mp4" 
-          autoplay 
+          poster="baby_scene_poster.jpg"
           loop 
           muted 
           playsinline 
           webkit-playsinline
+          preload="metadata"
           class="w-full h-full object-cover object-bottom">
         </video>
-        {/* Soft Pink Atmospheric Overlay */}
+        <!-- Soft Pink Atmospheric Overlay -->
         <div class="absolute inset-0 bg-gradient-to-b from-[#FFF5F7]/90 via-[#FFF5F7]/45 to-transparent h-[58%] pointer-events-none"></div>
         <div class="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-[#FCE8ED] to-transparent pointer-events-none"></div>
       </div>
@@ -1139,53 +1141,52 @@
       let isMusicPlaying = false;
       let isScratchRevealed = false;
       let celebrationTriggered = false;
-      let crossfadeInterval = null;
+      let audioFadeOutInterval = null;
+      let audioFadeInInterval = null;
+      let audioGapTimer = null;
 
-      function crossfadeAudio(audioOut, audioIn, durationMs = 1800, targetInVol = 0.45, defaultOutVol = 0.5) {
-        if (crossfadeInterval) {
-          clearInterval(crossfadeInterval);
-          crossfadeInterval = null;
-        }
+      function fadeOutAudio(audio, durationMs = 1000, defaultVol = 0.5) {
+        if (!audio) return;
+        if (audioFadeOutInterval) clearInterval(audioFadeOutInterval);
+        const steps = 20;
+        const intervalTime = durationMs / steps;
+        let step = 0;
+        const initialVol = (!audio.paused && audio.volume > 0) ? audio.volume : defaultVol;
+
+        audioFadeOutInterval = setInterval(() => {
+          step++;
+          const progress = Math.min(1, step / steps);
+          audio.volume = Math.max(0, initialVol * (1 - progress));
+          if (step >= steps) {
+            clearInterval(audioFadeOutInterval);
+            audioFadeOutInterval = null;
+            audio.pause();
+            audio.volume = defaultVol;
+          }
+        }, intervalTime);
+      }
+
+      function fadeInAudio(audio, durationMs = 1500, targetVol = 0.45) {
+        if (!audio) return;
+        if (audioFadeInInterval) clearInterval(audioFadeInInterval);
+        audio.volume = 0;
+        audio.play().then(() => {
+          isMusicPlaying = true;
+          if (audioIcon) audioIcon.textContent = '🔊';
+        }).catch(e => console.warn('Audio 2 play:', e));
 
         const steps = 30;
         const intervalTime = durationMs / steps;
         let step = 0;
 
-        // Start incoming audio at volume 0
-        if (audioIn) {
-          audioIn.volume = 0;
-          audioIn.play().then(() => {
-            isMusicPlaying = true;
-            if (audioIcon) audioIcon.textContent = '🔊';
-          }).catch(e => console.warn('Audio 2 play:', e));
-        }
-
-        const initialOutVol = (audioOut && !audioOut.paused && audioOut.volume > 0) ? audioOut.volume : defaultOutVol;
-
-        crossfadeInterval = setInterval(() => {
+        audioFadeInInterval = setInterval(() => {
           step++;
           const progress = Math.min(1, step / steps);
-
-          // Fade out outgoing audio 1
-          if (audioOut && !audioOut.paused) {
-            audioOut.volume = Math.max(0, initialOutVol * (1 - progress));
-          }
-
-          // Fade in incoming audio 2
-          if (audioIn) {
-            audioIn.volume = Math.min(targetInVol, targetInVol * progress);
-          }
-
+          audio.volume = Math.min(targetVol, targetVol * progress);
           if (step >= steps) {
-            clearInterval(crossfadeInterval);
-            crossfadeInterval = null;
-            if (audioOut) {
-              audioOut.pause();
-              audioOut.volume = defaultOutVol; // reset for potential replay
-            }
-            if (audioIn) {
-              audioIn.volume = targetInVol;
-            }
+            clearInterval(audioFadeInInterval);
+            audioFadeInInterval = null;
+            audio.volume = targetVol;
           }
         }, intervalTime);
       }
@@ -1236,8 +1237,21 @@
       function completeIntroTransition() {
         flashOverlay.style.opacity = '1';
 
-        // Smooth cinematic crossfade: fade out Audio 1 and fade in Audio 2
-        crossfadeAudio(audioSeal, audioBgm, 1800, 0.45, 0.5);
+        // 1. Smoothly fade out Audio 1 over 1000ms upon flash trigger
+        fadeOutAudio(audioSeal, 1000, 0.5);
+
+        // 2. Play hero video smoothly once flash occurs
+        const heroVideo = document.getElementById('heroVideo');
+        if (heroVideo && heroVideo.paused) {
+          heroVideo.play().catch(() => {});
+        }
+
+        // 3. Exact 2.5s calm gap between Audio 1 and Audio 2
+        if (audioGapTimer) clearTimeout(audioGapTimer);
+        audioGapTimer = setTimeout(() => {
+          fadeInAudio(audioBgm, 1500, 0.45);
+          audioGapTimer = null;
+        }, 2500);
 
         setTimeout(() => {
           screenIntro.style.opacity = '0';
@@ -1257,9 +1271,17 @@
       if (btnReplayIntro) {
         btnReplayIntro.addEventListener('click', () => {
           isOpened = false;
-          if (crossfadeInterval) {
-            clearInterval(crossfadeInterval);
-            crossfadeInterval = null;
+          if (audioGapTimer) {
+            clearTimeout(audioGapTimer);
+            audioGapTimer = null;
+          }
+          if (audioFadeOutInterval) {
+            clearInterval(audioFadeOutInterval);
+            audioFadeOutInterval = null;
+          }
+          if (audioFadeInInterval) {
+            clearInterval(audioFadeInInterval);
+            audioFadeInInterval = null;
           }
           if (audioBgm) {
             audioBgm.pause();
@@ -1271,6 +1293,10 @@
             audioSeal.pause();
             audioSeal.currentTime = 0;
             audioSeal.volume = 0.5;
+          }
+          const heroVideo = document.getElementById('heroVideo');
+          if (heroVideo) {
+            heroVideo.pause();
           }
 
           screenIntro.style.display = 'flex';
@@ -1286,6 +1312,23 @@
           sealHotspot.style.pointerEvents = 'auto';
 
           window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+
+      // Performance: Pause hero video when scrolled out of view to eliminate GPU load
+      const heroVideoEl = document.getElementById('heroVideo');
+      if (heroVideoEl && 'IntersectionObserver' in window) {
+        const videoObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && isOpened) {
+              if (heroVideoEl.paused) heroVideoEl.play().catch(() => {});
+            } else {
+              if (!heroVideoEl.paused) heroVideoEl.pause();
+            }
+          });
+        }, { threshold: 0.1 });
+        videoObserver.observe(heroVideoEl);
+      }
         });
       }
 
@@ -1694,8 +1737,8 @@
           }
         }
 
-        const sparkles = Array.from({ length: 30 }, () => new Sparkle());
-        const petals = Array.from({ length: 14 }, () => new Petal());
+        const sparkles = Array.from({ length: 16 }, () => new Sparkle());
+        const petals = Array.from({ length: 8 }, () => new Petal());
 
         function anim() {
           ctx.clearRect(0, 0, canvas.width, canvas.height);

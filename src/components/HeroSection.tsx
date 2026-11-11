@@ -1,22 +1,76 @@
 "use client";
 
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { INVITATION_CONFIG } from "@/config/invitation";
-import { FloralCardCrest, FloralHeaderDivider } from "@/components/FloralDecorations";
+import { FloralHeaderDivider } from "@/components/FloralDecorations";
 
-export const HeroSection: React.FC = () => {
+interface HeroSectionProps {
+  active?: boolean;
+}
+
+export const HeroSection: React.FC<HeroSectionProps> = ({ active = true }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (!active) {
+      video.pause();
+      return;
+    }
+
+    // Play video smoothly when active
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {});
+    }
+
+    // Performance: Pause video when scrolled out of viewport to save mobile GPU/CPU
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!video) return;
+          if (entry.isIntersecting && active) {
+            if (video.paused) {
+              video.play().catch(() => {});
+            }
+          } else {
+            if (!video.paused) {
+              video.pause();
+            }
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const section = sectionRef.current;
+    if (section) observer.observe(section);
+
+    return () => {
+      if (section) observer.unobserve(section);
+      observer.disconnect();
+    };
+  }, [active]);
+
   return (
-    <section className="relative min-h-[96vh] flex flex-col items-center justify-between p-6 text-center overflow-hidden bg-gradient-to-b from-[#FFF5F7] via-[#FDF0F3] to-[#FCE8ED]">
-      
-      {/* Baby Jeeshika Video as Main Hero Background */}
+    <section 
+      ref={sectionRef}
+      className="relative min-h-[96vh] flex flex-col items-center justify-between p-6 text-center overflow-hidden bg-gradient-to-b from-[#FFF5F7] via-[#FDF0F3] to-[#FCE8ED]"
+    >
+      {/* Baby Jeeshika Video as Main Hero Background (Optimized H.264 FastStart + Poster) */}
       <div className="absolute inset-0 z-0">
         <video
+          ref={videoRef}
           src={INVITATION_CONFIG.assets.heroVideo}
-          autoPlay
+          poster="/baby_scene_poster.jpg"
           loop
           muted
           playsInline
           webkit-playsinline="true"
+          preload={active ? "auto" : "metadata"}
           className="w-full h-full object-cover object-bottom"
         />
         {/* Soft Pink Atmospheric Vignette Overlay for Crisp Readability without obscuring the baby */}
@@ -61,7 +115,7 @@ export const HeroSection: React.FC = () => {
         <FloralHeaderDivider className="my-2" />
 
         {/* Warm Supporting Message */}
-        <div className="bg-gradient-to-r from-[#FFF5F7]/90 via-white/95 to-[#FFF5F7]/90 backdrop-blur-sm border border-[#D4AF37]/55 rounded-2xl px-4 py-3 shadow-sm mt-1">
+        <div className="bg-gradient-to-r from-[#FFF5F7]/95 via-white to-[#FFF5F7]/95 border border-[#D4AF37]/55 rounded-2xl px-4 py-3 shadow-sm mt-1">
           <p className="text-xs md:text-[13px] font-tamil font-normal text-[#521120] leading-relaxed">
             "{INVITATION_CONFIG.baby.homepageMessage}"
           </p>

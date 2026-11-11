@@ -15,10 +15,8 @@ export const ParticleCanvas: React.FC = () => {
     let animationFrameId: number;
 
     const resize = () => {
-      if (canvas.parentElement) {
-        canvas.width = canvas.parentElement.clientWidth;
-        canvas.height = canvas.parentElement.clientHeight;
-      }
+      canvas.width = Math.min(window.innerWidth, 430);
+      canvas.height = window.innerHeight;
     };
 
     resize();
@@ -138,8 +136,8 @@ export const ParticleCanvas: React.FC = () => {
       }
     }
 
-    const sparkles = Array.from({ length: 32 }, () => new Sparkle());
-    const petals = Array.from({ length: 16 }, () => new Petal());
+    const sparkles = Array.from({ length: 16 }, () => new Sparkle());
+    const petals = Array.from({ length: 8 }, () => new Petal());
 
     const loop = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -168,7 +166,7 @@ export const ParticleCanvas: React.FC = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 pointer-events-none z-10 w-full h-full"
+      className="fixed inset-0 pointer-events-none z-10 w-full h-full max-w-[430px] mx-auto"
     />
   );
 };

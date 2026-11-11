@@ -19,6 +19,7 @@ export default function Home() {
   const [bgmActive, setBgmActive] = useState(false);
   const [celebrationActive, setCelebrationActive] = useState(false);
   const [celebrationFired, setCelebrationFired] = useState(false);
+  const bgmTimerRef = React.useRef<NodeJS.Timeout | null>(null);
 
   const handleScratchSuccess = () => {
     if (celebrationFired) return;
@@ -26,7 +27,20 @@ export default function Home() {
     setCelebrationActive(true);
   };
 
+  const handleTransitionStart = () => {
+    // 2.5s calm gap between Audio 1 fading out and Audio 2 starting
+    if (bgmTimerRef.current) clearTimeout(bgmTimerRef.current);
+    bgmTimerRef.current = setTimeout(() => {
+      setBgmActive(true);
+      bgmTimerRef.current = null;
+    }, 2500);
+  };
+
   const handleReplayIntro = () => {
+    if (bgmTimerRef.current) {
+      clearTimeout(bgmTimerRef.current);
+      bgmTimerRef.current = null;
+    }
     setBgmActive(false);
     setIntroCompleted(false);
   };
@@ -52,8 +66,8 @@ export default function Home() {
         {/* Exact Invitation Flow */}
         <div className="relative z-10 flex flex-col">
           
-          {/* 2. Baby Jeeshika Video Homepage */}
-          <HeroSection />
+          {/* 2. Baby Jeeshika Video Homepage (Activated only after intro transition to prevent dual video lag) */}
+          <HeroSection active={introCompleted} />
 
           <BotanicalVineConnector />
 
@@ -89,7 +103,7 @@ export default function Home() {
         {/* 1. Cinematic Heart-Seal Intro Overlay */}
         {!introCompleted && (
           <IntroScreen 
-            onTransitionStart={() => setBgmActive(true)}
+            onTransitionStart={handleTransitionStart}
             onComplete={() => setIntroCompleted(true)} 
           />
         )}
