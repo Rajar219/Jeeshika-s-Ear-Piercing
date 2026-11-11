@@ -143,7 +143,7 @@ export const FullPageCelebration: React.FC<CelebrationProps> = ({ active, onFini
         ctx.fillStyle = p.color;
         if (p.isSpark) {
           ctx.shadowColor = p.color;
-          ctx.shadowBlur = 8;
+          ctx.shadowBlur = 4;
         }
         ctx.fill();
         ctx.restore();
@@ -153,7 +153,9 @@ export const FullPageCelebration: React.FC<CelebrationProps> = ({ active, onFini
         animId = requestAnimationFrame(render);
       } else {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        if (onFinish) onFinish();
+        if (onFinish) {
+          setTimeout(onFinish, 0);
+        }
       }
     };
 

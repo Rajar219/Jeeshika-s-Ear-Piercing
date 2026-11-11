@@ -12,13 +12,20 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ autoPlay = false }) =>
   const hasAutoStartedRef = useRef(false);
 
   useEffect(() => {
-    const audio = new Audio("/audio 2.mp3");
-    audio.loop = true;
-    audio.volume = 0.45; // Softened ambient celebration music volume
-    audioRef.current = audio;
+    let audio: HTMLAudioElement | null = null;
+    try {
+      audio = new Audio("/audio 2.mp3");
+      audio.loop = true;
+      try { audio.volume = 0.45; } catch (_) {}
+      audioRef.current = audio;
+    } catch (e) {
+      console.warn("Audio 2 init error:", e);
+    }
 
     return () => {
-      audio.pause();
+      if (audio) {
+        try { audio.pause(); } catch (_) {}
+      }
       audioRef.current = null;
     };
   }, []);
@@ -27,7 +34,8 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ autoPlay = false }) =>
     if (autoPlay && !hasAutoStartedRef.current && audioRef.current) {
       hasAutoStartedRef.current = true;
       const audio = audioRef.current;
-      audio.volume = 0;
+      try { audio.volume = 0; } catch (_) {}
+      
       audio.play().then(() => {
         setIsPlaying(true);
         // Smooth crossfade: ramp volume from 0 to 0.45 over 1800ms
@@ -38,11 +46,15 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ autoPlay = false }) =>
         const fadeInInterval = setInterval(() => {
           step++;
           if (audio) {
-            audio.volume = Math.min(targetVol, (step / steps) * targetVol);
+            try {
+              audio.volume = Math.min(targetVol, (step / steps) * targetVol);
+            } catch (_) {}
           }
           if (step >= steps) {
             clearInterval(fadeInInterval);
-            if (audio) audio.volume = targetVol;
+            if (audio) {
+              try { audio.volume = targetVol; } catch (_) {}
+            }
           }
         }, stepTime);
       }).catch((e) => {
@@ -50,8 +62,10 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ autoPlay = false }) =>
       });
     } else if (!autoPlay && audioRef.current) {
       hasAutoStartedRef.current = false;
-      audioRef.current.pause();
-      audioRef.current.volume = 0.45;
+      try {
+        audioRef.current.pause();
+        audioRef.current.volume = 0.45;
+      } catch (_) {}
       setIsPlaying(false);
     }
   }, [autoPlay]);

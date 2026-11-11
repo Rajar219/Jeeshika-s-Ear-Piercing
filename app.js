@@ -642,8 +642,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   btnAddCalendar.addEventListener('click', () => {
     const title = encodeURIComponent("பேபி. ஜீஷிகா காதுகுத்து விழா (Baby Jeeshika Ear Piercing Ceremony)");
-    const details = encodeURIComponent("எங்கள் அன்பு மகள் பேபி. ஜீஷிகாவின் செவிப்பொன் சேர்ப்பு விழா சுபமுகூர்த்த நன்னாள். இடம்: ஶ்ரீ அங்காளம்மன் கோவில், கொக்கலை, மரப்பாறை, தமிழ்நாடு – 637410.");
-    const location = encodeURIComponent("Sri Angalamman Temple, Kokkalai, Marapparai, Tamil Nadu – 637410");
+    const details = encodeURIComponent("எங்கள் அன்பு மகள் பேபி. ஜீஷிகாவின் செவிப்பொன் சேர்ப்பு விழா சுபமுகூர்த்த நன்னாள். இடம்: ஶ்ரீ அங்காளபரமேஸ்வரி கோவில், கொக்கலை, மரப்பாறை, தமிழ்நாடு – 637410.");
+    const location = encodeURIComponent("Sri Angalaparameshwari Temple, Kokkalai, Marapparai, Tamil Nadu – 637410");
     // Start: 20270118T120000, End: 20270118T130000
     const googleCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=20270118T063000Z/20270118T073000Z&details=${details}&location=${location}`;
 
@@ -655,7 +655,7 @@ document.addEventListener('DOMContentLoaded', () => {
       'BEGIN:VEVENT',
       'SUMMARY:பேபி. ஜீஷிகா செவிப்பொன் சேர்ப்பு விழா',
       'DESCRIPTION:Baby Jeeshika Ear Piercing Ceremony',
-      'LOCATION:Sri Angalamman Temple, Kokkalai, Marapparai, Tamil Nadu – 637410',
+      'LOCATION:Sri Angalaparameshwari Temple, Kokkalai, Marapparai, Tamil Nadu – 637410',
       'DTSTART:20270118T063000Z',
       'DTEND:20270118T073000Z',
       'END:VEVENT',
@@ -679,7 +679,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // =========================================================================
 
   btnShareWhatsapp.addEventListener('click', () => {
-    const shareText = `🌸 *அன்போடு அழைக்கின்றோம்!* 🌸\n\nஎங்களின் இல்லத்து இளவரசி *பேபி. ஜீஷிகாவின் செவிப்பொன் சேர்ப்பு விழா* சுபமுகூர்த்த நன்னாளிற்கு தாங்களும் தங்கள் குடும்பத்தாரும் வருகை தந்து எமது செல்வ மகளை ஆசீர்வதிக்க அன்புடன் வேண்டுகிறோம். ✨\n\n📅 *நாள்:* 18 ஜனவரி 2027, திங்கட்கிழமை (மதியம் 12:00 - 1:00)\n🏛️ *இடம்:* ஶ்ரீ அங்காளம்மன் கோவில், கொக்கலை, மரப்பாறை, தமிழ்நாடு – 637410\n\n✨ *டிஜிட்டல் அழைப்பிதழ் காண:* ${window.location.href}`;
+    const shareText = `🌸 *அன்போடு அழைக்கின்றோம்!* 🌸\n\nஎங்களின் இல்லத்து இளவரசி *பேபி. ஜீஷிகாவின் செவிப்பொன் சேர்ப்பு விழா* சுபமுகூர்த்த நன்னாளிற்கு தாங்களும் தங்கள் குடும்பத்தாரும் வருகை தந்து எமது செல்வ மகளை ஆசீர்வதிக்க அன்புடன் வேண்டுகிறோம். ✨\n\n📅 *நாள்:* 18 ஜனவரி 2027, திங்கட்கிழமை (மதியம் 12:00 - 1:00)\n🏛️ *இடம்:* ஶ்ரீ அங்காளபரமேஸ்வரி கோவில், கொக்கலை, மரப்பாறை, தமிழ்நாடு – 637410\n\n✨ *டிஜிட்டல் அழைப்பிதழ் காண:* ${window.location.href}`;
     const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
     window.open(url, '_blank');
   });

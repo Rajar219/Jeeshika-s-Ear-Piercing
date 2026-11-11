@@ -18,32 +18,32 @@ export default function Home() {
   const [introCompleted, setIntroCompleted] = useState(false);
   const [bgmActive, setBgmActive] = useState(false);
   const [celebrationActive, setCelebrationActive] = useState(false);
-  const [celebrationFired, setCelebrationFired] = useState(false);
+  const celebrationFiredRef = React.useRef(false);
   const bgmTimerRef = React.useRef<NodeJS.Timeout | null>(null);
 
-  const handleScratchSuccess = () => {
-    if (celebrationFired) return;
-    setCelebrationFired(true);
+  const handleScratchSuccess = React.useCallback(() => {
+    if (celebrationFiredRef.current) return;
+    celebrationFiredRef.current = true;
     setCelebrationActive(true);
-  };
+  }, []);
 
-  const handleTransitionStart = () => {
+  const handleTransitionStart = React.useCallback(() => {
     // 2.5s calm gap between Audio 1 fading out and Audio 2 starting
     if (bgmTimerRef.current) clearTimeout(bgmTimerRef.current);
     bgmTimerRef.current = setTimeout(() => {
       setBgmActive(true);
       bgmTimerRef.current = null;
     }, 2500);
-  };
+  }, []);
 
-  const handleReplayIntro = () => {
+  const handleReplayIntro = React.useCallback(() => {
     if (bgmTimerRef.current) {
       clearTimeout(bgmTimerRef.current);
       bgmTimerRef.current = null;
     }
     setBgmActive(false);
     setIntroCompleted(false);
-  };
+  }, []);
 
   return (
     <main className="min-h-screen bg-[#0d040a] flex items-center justify-center p-0 md:py-8">

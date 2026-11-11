@@ -17,41 +17,53 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ active = true }) => {
     if (!video) return;
 
     if (!active) {
-      video.pause();
+      try {
+        video.pause();
+      } catch (_) {}
       return;
     }
 
     // Play video smoothly when active
-    const playPromise = video.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(() => {});
-    }
+    try {
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {});
+      }
+    } catch (_) {}
 
     // Performance: Pause video when scrolled out of viewport to save mobile GPU/CPU
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!video) return;
-          if (entry.isIntersecting && active) {
-            if (video.paused) {
-              video.play().catch(() => {});
-            }
-          } else {
-            if (!video.paused) {
-              video.pause();
-            }
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
+    let observer: IntersectionObserver | null = null;
+    if (typeof window !== "undefined" && "IntersectionObserver" in window) {
+      try {
+        observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!video) return;
+              if (entry.isIntersecting && active) {
+                if (video.paused) {
+                  video.play().catch(() => {});
+                }
+              } else {
+                if (!video.paused) {
+                  video.pause();
+                }
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
 
-    const section = sectionRef.current;
-    if (section) observer.observe(section);
+        const section = sectionRef.current;
+        if (section) observer.observe(section);
+      } catch (err) {
+        console.warn("Hero intersection observer error:", err);
+      }
+    }
 
     return () => {
-      if (section) observer.unobserve(section);
-      observer.disconnect();
+      if (observer) {
+        observer.disconnect();
+      }
     };
   }, [active]);
 

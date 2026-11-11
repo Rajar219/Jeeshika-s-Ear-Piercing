@@ -12,43 +12,68 @@ export const ScratchToReveal: React.FC<ScratchProps> = ({ onCelebrationTrigger }
   const containerRef = useRef<HTMLDivElement>(null);
   const [isRevealed, setIsRevealed] = useState(false);
   const [scratchPercent, setScratchPercent] = useState(0);
+  const isRevealedRef = useRef(false);
 
   const WIDTH = 300;
   const HEIGHT = 280;
 
-  // Perfect Heart Path in 300x280 box
+  // Perfect Heart SVG Path Definition in 300x280 box
   const heartPathD = "M 150,260 C 150,260 20,180 20,95 C 20,40 65,15 112,42 C 138,58 150,80 150,80 C 150,80 162,58 188,42 C 235,15 280,40 280,95 C 280,180 150,260 150,260 Z";
 
+  // Standard Canvas 2D Heart Path (Universal mobile & Android support without Path2D dependency)
+  const drawHeartPath = (c: CanvasRenderingContext2D) => {
+    c.beginPath();
+    c.moveTo(150, 260);
+    c.bezierCurveTo(150, 260, 20, 180, 20, 95);
+    c.bezierCurveTo(20, 40, 65, 15, 112, 42);
+    c.bezierCurveTo(138, 58, 150, 80, 150, 80);
+    c.bezierCurveTo(150, 80, 162, 58, 188, 42);
+    c.bezierCurveTo(235, 15, 280, 40, 280, 95);
+    c.bezierCurveTo(280, 180, 150, 260, 150, 260);
+    c.closePath();
+  };
+
   const triggerReveal = useCallback(() => {
-    if (isRevealed) return;
+    if (isRevealedRef.current) return;
+    isRevealedRef.current = true;
     setIsRevealed(true);
     setScratchPercent(100);
+
     const canvas = canvasRef.current;
     if (canvas) {
       canvas.style.transition = "opacity 0.6s ease-out";
       canvas.style.opacity = "0";
       canvas.style.pointerEvents = "none";
     }
+
     if (onCelebrationTrigger) {
       onCelebrationTrigger();
     }
-  }, [isRevealed, onCelebrationTrigger]);
+  }, [onCelebrationTrigger]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext("2d");
+
+    // Use willReadFrequently to optimize getImageData on mobile browsers
+    const ctx = canvas.getContext("2d", { willReadFrequently: true });
     if (!ctx) return;
 
-    canvas.width = WIDTH;
-    canvas.height = HEIGHT;
+    // High-DPI support for razor-sharp scratch layer on modern mobile screens
+    const dpr = typeof window !== "undefined" ? Math.min(window.devicePixelRatio || 1, 3) : 1;
+    canvas.width = WIDTH * dpr;
+    canvas.height = HEIGHT * dpr;
+    canvas.style.width = `${WIDTH}px`;
+    canvas.style.height = `${HEIGHT}px`;
 
-    // Draw the luxury scratch coating
     ctx.save();
-    const p = new Path2D(heartPathD);
-    ctx.clip(p);
+    ctx.scale(dpr, dpr);
 
-    // Royal Blush Pink & Champagne Gold Foil Gradient
+    // 1. Clip inside heart shape using standard Canvas 2D path
+    drawHeartPath(ctx);
+    ctx.clip();
+
+    // 2. Royal Blush Pink & Champagne Gold Foil Gradient
     const grad = ctx.createLinearGradient(0, 0, WIDTH, HEIGHT);
     grad.addColorStop(0, "#FAD2E1");
     grad.addColorStop(0.35, "#E8B7C4");
@@ -57,7 +82,7 @@ export const ScratchToReveal: React.FC<ScratchProps> = ({ onCelebrationTrigger }
     ctx.fillStyle = grad;
     ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
-    // Subtle metallic gold speckles
+    // 3. Subtle metallic gold speckles
     for (let i = 0; i < 110; i++) {
       ctx.beginPath();
       ctx.arc(Math.random() * WIDTH, Math.random() * HEIGHT, Math.random() * 2 + 0.5, 0, Math.PI * 2);
@@ -65,12 +90,13 @@ export const ScratchToReveal: React.FC<ScratchProps> = ({ onCelebrationTrigger }
       ctx.fill();
     }
 
-    // Inner gold decorative heart border
+    // 4. Inner gold decorative heart border
+    drawHeartPath(ctx);
     ctx.strokeStyle = "rgba(212, 175, 55, 0.5)";
     ctx.lineWidth = 2.5;
-    ctx.stroke(p);
+    ctx.stroke();
 
-    // Prompt Text on Scratch Layer
+    // 5. Prompt Text on Scratch Layer
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
 
@@ -90,44 +116,42 @@ export const ScratchToReveal: React.FC<ScratchProps> = ({ onCelebrationTrigger }
 
     ctx.restore();
 
-    let isDrawing = false;
+    let isScratching = false;
     let lastPoint: { x: number; y: number } | null = null;
+    let checkAnimFrameId: number | null = null;
 
-    const getPos = (e: MouseEvent | TouchEvent | PointerEvent) => {
+    // Safe coordinate calculation with bound checking
+    const getCoords = (clientX: number, clientY: number) => {
       const rect = canvas.getBoundingClientRect();
+      if (!rect || rect.width <= 0 || rect.height <= 0) {
+        return { x: 150, y: 140 };
+      }
       const scaleX = WIDTH / rect.width;
       const scaleY = HEIGHT / rect.height;
-
-      if ("touches" in e) {
-        const touch = e.touches[0] || (e as TouchEvent).changedTouches?.[0];
-        if (touch) {
-          return {
-            x: (touch.clientX - rect.left) * scaleX,
-            y: (touch.clientY - rect.top) * scaleY,
-          };
-        }
-        return { x: 0, y: 0 };
-      }
+      const x = (clientX - rect.left) * scaleX;
+      const y = (clientY - rect.top) * scaleY;
       return {
-        x: ((e as MouseEvent).clientX - rect.left) * scaleX,
-        y: ((e as MouseEvent).clientY - rect.top) * scaleY,
+        x: Number.isFinite(x) ? Math.max(0, Math.min(WIDTH, x)) : 150,
+        y: Number.isFinite(y) ? Math.max(0, Math.min(HEIGHT, y)) : 140,
       };
     };
 
     const scratch = (x: number, y: number) => {
+      if (!Number.isFinite(x) || !Number.isFinite(y)) return;
       ctx.save();
+      ctx.scale(dpr, dpr);
       ctx.globalCompositeOperation = "destination-out";
       ctx.beginPath();
 
-      if (lastPoint) {
-        ctx.lineWidth = 54;
+      if (lastPoint && Number.isFinite(lastPoint.x) && Number.isFinite(lastPoint.y)) {
+        ctx.lineWidth = 50;
         ctx.lineCap = "round";
         ctx.lineJoin = "round";
         ctx.moveTo(lastPoint.x, lastPoint.y);
         ctx.lineTo(x, y);
         ctx.stroke();
       } else {
-        ctx.arc(x, y, 28, 0, Math.PI * 2);
+        ctx.arc(x, y, 25, 0, Math.PI * 2);
         ctx.fill();
       }
 
@@ -137,9 +161,16 @@ export const ScratchToReveal: React.FC<ScratchProps> = ({ onCelebrationTrigger }
 
     // Calculate Scratched Percentage from the active heart area
     const checkProgress = () => {
-      if (isRevealed) return;
+      if (isRevealedRef.current) return;
       try {
-        const imgData = ctx.getImageData(35, 45, WIDTH - 70, HEIGHT - 90);
+        const sx = Math.floor(35 * dpr);
+        const sy = Math.floor(45 * dpr);
+        const sw = Math.floor((WIDTH - 70) * dpr);
+        const sh = Math.floor((HEIGHT - 90) * dpr);
+
+        if (sw <= 0 || sh <= 0) return;
+
+        const imgData = ctx.getImageData(sx, sy, sw, sh);
         const data = imgData.data;
         let transparentPixels = 0;
         let totalSampled = 0;
@@ -151,54 +182,111 @@ export const ScratchToReveal: React.FC<ScratchProps> = ({ onCelebrationTrigger }
           }
         }
 
+        if (totalSampled === 0) return;
         const pct = Math.round((transparentPixels / totalSampled) * 100);
         setScratchPercent(pct);
 
-        // Smooth responsive threshold: 38% triggers completion and celebration
-        if (pct >= 38 && !isRevealed) {
+        // 38% triggers completion and celebration
+        if (pct >= 38 && !isRevealedRef.current) {
           triggerReveal();
         }
       } catch (err) {
-        console.warn("Scratch check:", err);
+        console.warn("Scratch check progress error:", err);
       }
     };
 
-    // Unified Pointer Events (Mouse, Touch, Stylus)
+    const throttledCheckProgress = () => {
+      if (checkAnimFrameId !== null) return;
+      checkAnimFrameId = requestAnimationFrame(() => {
+        checkAnimFrameId = null;
+        checkProgress();
+      });
+    };
+
+    // Unified Pointer Event Handlers
     const onPointerDown = (e: PointerEvent) => {
-      isDrawing = true;
-      try { canvas.setPointerCapture(e.pointerId); } catch (_) {}
-      const { x, y } = getPos(e);
-      lastPoint = { x, y };
-      scratch(x, y);
+      isScratching = true;
+      try {
+        canvas.setPointerCapture(e.pointerId);
+      } catch (_) {}
+      const pt = getCoords(e.clientX, e.clientY);
+      lastPoint = pt;
+      scratch(pt.x, pt.y);
     };
 
     const onPointerMove = (e: PointerEvent) => {
-      if (!isDrawing) return;
-      const { x, y } = getPos(e);
-      scratch(x, y);
-      checkProgress();
+      if (!isScratching) return;
+      const pt = getCoords(e.clientX, e.clientY);
+      scratch(pt.x, pt.y);
+      throttledCheckProgress();
     };
 
     const onPointerUp = (e: PointerEvent) => {
-      if (!isDrawing) return;
-      isDrawing = false;
+      if (!isScratching) return;
+      isScratching = false;
       lastPoint = null;
-      try { canvas.releasePointerCapture(e.pointerId); } catch (_) {}
+      try {
+        canvas.releasePointerCapture(e.pointerId);
+      } catch (_) {}
       checkProgress();
     };
 
+    // Touch Event Handlers for guaranteed mobile Android / iOS fallback
+    const onTouchStart = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        if (e.cancelable) e.preventDefault();
+        isScratching = true;
+        const touch = e.touches[0];
+        const pt = getCoords(touch.clientX, touch.clientY);
+        lastPoint = pt;
+        scratch(pt.x, pt.y);
+      }
+    };
+
+    const onTouchMove = (e: TouchEvent) => {
+      if (!isScratching) return;
+      if (e.touches.length > 0) {
+        if (e.cancelable) e.preventDefault();
+        const touch = e.touches[0];
+        const pt = getCoords(touch.clientX, touch.clientY);
+        scratch(pt.x, pt.y);
+        throttledCheckProgress();
+      }
+    };
+
+    const onTouchEnd = () => {
+      if (!isScratching) return;
+      isScratching = false;
+      lastPoint = null;
+      checkProgress();
+    };
+
+    // Attach listeners
     canvas.addEventListener("pointerdown", onPointerDown);
     canvas.addEventListener("pointermove", onPointerMove);
     canvas.addEventListener("pointerup", onPointerUp);
     canvas.addEventListener("pointercancel", onPointerUp);
 
+    canvas.addEventListener("touchstart", onTouchStart, { passive: false });
+    canvas.addEventListener("touchmove", onTouchMove, { passive: false });
+    canvas.addEventListener("touchend", onTouchEnd);
+    canvas.addEventListener("touchcancel", onTouchEnd);
+
     return () => {
+      if (checkAnimFrameId !== null) {
+        cancelAnimationFrame(checkAnimFrameId);
+      }
       canvas.removeEventListener("pointerdown", onPointerDown);
       canvas.removeEventListener("pointermove", onPointerMove);
       canvas.removeEventListener("pointerup", onPointerUp);
       canvas.removeEventListener("pointercancel", onPointerUp);
+
+      canvas.removeEventListener("touchstart", onTouchStart);
+      canvas.removeEventListener("touchmove", onTouchMove);
+      canvas.removeEventListener("touchend", onTouchEnd);
+      canvas.removeEventListener("touchcancel", onTouchEnd);
     };
-  }, [isRevealed, triggerReveal]);
+  }, [triggerReveal]);
 
   return (
     <section className="relative p-6 flex flex-col items-center text-center my-6">
@@ -243,12 +331,12 @@ export const ScratchToReveal: React.FC<ScratchProps> = ({ onCelebrationTrigger }
           style={{ clipPath: "url(#revealHeartClip)" }}
         >
           {/* MONDAY */}
-          <span className="text-sm font-serif font-bold tracking-[0.25em] text-[#9B3459] uppercase block mb-1">
+          <span className="text-sm font-serif font-bold tracking-[0.28em] text-[#9B3459] uppercase block mb-1.5">
             MONDAY
           </span>
 
           {/* 18 JANUARY 2027 */}
-          <div className="my-1.5 border-t border-b border-[#D4AF37]/50 py-2.5 w-4/5 text-center">
+          <div className="my-1 border-t border-b border-[#D4AF37]/50 py-2.5 w-4/5 flex flex-col items-center justify-center">
             <h4 className="text-3xl md:text-[34px] font-serif font-black text-[#6B1D2F] leading-none tracking-tight">
               18 JANUARY
             </h4>
@@ -262,7 +350,10 @@ export const ScratchToReveal: React.FC<ScratchProps> = ({ onCelebrationTrigger }
         <canvas
           ref={canvasRef}
           className="absolute inset-0 z-20 cursor-pointer touch-none"
-          style={{ clipPath: "url(#revealHeartClip)" }}
+          style={{ 
+            clipPath: "url(#revealHeartClip)",
+            touchAction: "none"
+          }}
         />
 
         {/* PERMANENT METALLIC CHAMPAGNE-GOLD HEART OUTLINE */}
