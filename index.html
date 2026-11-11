@@ -1253,7 +1253,9 @@
         // 3. Exact 2.5s calm gap between Audio 1 and Audio 2
         if (audioGapTimer) clearTimeout(audioGapTimer);
         audioGapTimer = setTimeout(() => {
-          fadeInAudio(audioBgm, 1500, 0.45);
+          if (!document.hidden && document.visibilityState === 'visible') {
+            fadeInAudio(audioBgm, 1500, 0.45);
+          }
           audioGapTimer = null;
         }, 2500);
 
@@ -1333,8 +1335,48 @@
         }, { threshold: 0.1 });
         videoObserver.observe(heroVideoEl);
       }
-        });
+
+      // Strict Background Audio Lifecycle Control
+      function stopAllAudioOnInactive() {
+        if (audioGapTimer) {
+          clearTimeout(audioGapTimer);
+          audioGapTimer = null;
+        }
+        if (audioFadeOutInterval) {
+          clearInterval(audioFadeOutInterval);
+          audioFadeOutInterval = null;
+        }
+        if (audioFadeInInterval) {
+          clearInterval(audioFadeInInterval);
+          audioFadeInInterval = null;
+        }
+        if (audioBgm) {
+          try {
+            audioBgm.pause();
+            audioBgm.currentTime = 0;
+            audioBgm.volume = 0.45;
+          } catch (_) {}
+          isMusicPlaying = false;
+          if (audioIcon) audioIcon.textContent = '🔇';
+        }
+        if (audioSeal) {
+          try {
+            audioSeal.pause();
+            audioSeal.currentTime = 0;
+            audioSeal.volume = 0.5;
+          } catch (_) {}
+        }
       }
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden || document.visibilityState === 'hidden') {
+          stopAllAudioOnInactive();
+        }
+      });
+      window.addEventListener('pagehide', stopAllAudioOnInactive);
+      window.addEventListener('blur', stopAllAudioOnInactive);
+      window.addEventListener('freeze', stopAllAudioOnInactive);
+      window.addEventListener('beforeunload', stopAllAudioOnInactive);
 
       // 2. Audio Control
       if (btnAudio && audioBgm) {
@@ -1344,6 +1386,11 @@
             isMusicPlaying = false;
             audioIcon.textContent = '🔇';
           } else {
+            if (audioFadeInInterval) {
+              clearInterval(audioFadeInInterval);
+              audioFadeInInterval = null;
+            }
+            audioBgm.volume = 0.45;
             audioBgm.play().then(() => {
               isMusicPlaying = true;
               audioIcon.textContent = '🔊';

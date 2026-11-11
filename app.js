@@ -286,6 +286,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   btnToggleAudio.addEventListener('click', toggleAudio);
 
+  // Strict Background Audio Lifecycle Control
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden || document.visibilityState === 'hidden') {
+      pauseFestiveAudio();
+    }
+  });
+  window.addEventListener('pagehide', pauseFestiveAudio);
+  window.addEventListener('blur', pauseFestiveAudio);
+  window.addEventListener('freeze', pauseFestiveAudio);
+  window.addEventListener('beforeunload', pauseFestiveAudio);
+
   // =========================================================================
   // 3. HTML5 CANVAS PARTICLE ENGINE (Floating Gold Dust & 3D Falling Petals)
   // =========================================================================

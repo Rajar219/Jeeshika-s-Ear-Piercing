@@ -36,9 +36,48 @@ export const IntroScreen: React.FC<IntroScreenProps> = ({ onComplete, onTransiti
       } catch (_) {}
     }
 
-    return () => {
+    const stopIntroMedia = () => {
       if (fadeOutTimerRef.current) {
         clearInterval(fadeOutTimerRef.current);
+        fadeOutTimerRef.current = null;
+      }
+      if (audio1Ref.current) {
+        try {
+          audio1Ref.current.pause();
+          audio1Ref.current.currentTime = 0;
+          audio1Ref.current.volume = 0.5;
+        } catch (_) {}
+      }
+      const vid = videoRef.current;
+      if (vid) {
+        try {
+          vid.pause();
+        } catch (_) {}
+      }
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.hidden || document.visibilityState === "hidden") {
+        stopIntroMedia();
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    window.addEventListener("pagehide", stopIntroMedia);
+    window.addEventListener("blur", stopIntroMedia);
+    window.addEventListener("freeze", stopIntroMedia);
+    window.addEventListener("beforeunload", stopIntroMedia);
+
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      window.removeEventListener("pagehide", stopIntroMedia);
+      window.removeEventListener("blur", stopIntroMedia);
+      window.removeEventListener("freeze", stopIntroMedia);
+      window.removeEventListener("beforeunload", stopIntroMedia);
+
+      if (fadeOutTimerRef.current) {
+        clearInterval(fadeOutTimerRef.current);
+        fadeOutTimerRef.current = null;
       }
       if (audio) {
         try { audio.pause(); } catch (_) {}

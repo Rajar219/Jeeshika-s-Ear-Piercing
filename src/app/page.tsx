@@ -31,9 +31,46 @@ export default function Home() {
     // 2.5s calm gap between Audio 1 fading out and Audio 2 starting
     if (bgmTimerRef.current) clearTimeout(bgmTimerRef.current);
     bgmTimerRef.current = setTimeout(() => {
-      setBgmActive(true);
+      if (typeof document !== "undefined" && !document.hidden && document.visibilityState === "visible") {
+        setBgmActive(true);
+      }
       bgmTimerRef.current = null;
     }, 2500);
+  }, []);
+
+  // Strict page visibility & lifecycle control for background audio scheduling
+  React.useEffect(() => {
+    const handleInactive = () => {
+      if (bgmTimerRef.current) {
+        clearTimeout(bgmTimerRef.current);
+        bgmTimerRef.current = null;
+      }
+      setBgmActive(false);
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.hidden || document.visibilityState === "hidden") {
+        handleInactive();
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    window.addEventListener("pagehide", handleInactive);
+    window.addEventListener("blur", handleInactive);
+    window.addEventListener("freeze", handleInactive);
+    window.addEventListener("beforeunload", handleInactive);
+
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      window.removeEventListener("pagehide", handleInactive);
+      window.removeEventListener("blur", handleInactive);
+      window.removeEventListener("freeze", handleInactive);
+      window.removeEventListener("beforeunload", handleInactive);
+      if (bgmTimerRef.current) {
+        clearTimeout(bgmTimerRef.current);
+        bgmTimerRef.current = null;
+      }
+    };
   }, []);
 
   const handleReplayIntro = React.useCallback(() => {
