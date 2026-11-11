@@ -1,0 +1,719 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@400;500;600;700;800&family=Noto+Serif+Tamil:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Cinzel+Decorative:wght@700&family=Great+Vibes&display=swap');
+
+:root {
+  --gold-primary: #D4AF37;
+  --gold-light: #F9E79F;
+  --gold-dark: #996515;
+  --maroon-deep: #6B1D2F;
+  --maroon-royal: #521120;
+  --pink-blush: #FFD1DC;
+  --pink-petal: #FAD2E1;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Baloo Thambi 2', 'Noto Serif Tamil', sans-serif;
+  background-color: #0d0610;
+  background-image: 
+    radial-gradient(circle at 50% 15%, rgba(212, 175, 55, 0.15) 0%, transparent 60%),
+    radial-gradient(circle at 80% 85%, rgba(107, 29, 47, 0.25) 0%, transparent 50%),
+    radial-gradient(circle at 20% 75%, rgba(255, 182, 193, 0.1) 0%, transparent 40%);
+  color: #333;
+  overflow: hidden;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Tamil font classes */
+.font-tamil-serif {
+  font-family: 'Noto Serif Tamil', serif;
+}
+
+.font-tamil-display {
+  font-family: 'Baloo Thambi 2', sans-serif;
+}
+
+.font-english-royal {
+  font-family: 'Great Vibes', cursive;
+}
+
+.font-cinzel {
+  font-family: 'Cinzel Decorative', cursive;
+}
+
+/* 9:16 Portrait Container for Desktop / Native Full-Screen on Mobile */
+.mobile-stage {
+  width: 100%;
+  height: 100%;
+  max-width: 430px;
+  max-height: 880px;
+  aspect-ratio: 9 / 16;
+  position: relative;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.8), 0 0 35px rgba(212, 175, 55, 0.35);
+  border: 4px solid rgba(212, 175, 55, 0.65);
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 640px) {
+  .mobile-stage {
+    max-width: 100vw;
+    max-height: 100dvh;
+    height: 100dvh;
+    aspect-ratio: unset;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+  }
+}
+
+/* Phone Bezel Top Speaker / Camera Accent (Desktop only) */
+.phone-notch {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 4.5px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  z-index: 50;
+  pointer-events: none;
+}
+
+@media (max-width: 640px) {
+  .phone-notch {
+    display: none;
+  }
+}
+
+/* Screen Layers */
+.screen-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Screen 1: Video Layer */
+#screen-video-layer {
+  z-index: 20;
+  transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), transform 1.2s ease-out;
+}
+
+#video-envelope {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Pulse Hotspot on Seal */
+.seal-hotspot-container {
+  position: absolute;
+  top: 48%;
+  left: 53.2%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 30;
+  cursor: pointer;
+}
+
+.hotspot-button {
+  position: relative;
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle, rgba(255, 223, 100, 0.4) 0%, rgba(212, 175, 55, 0.1) 70%, transparent 100%);
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+
+.hotspot-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 215, 0, 0.85);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+  animation: pulseRing 2.2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+.hotspot-ring-2 {
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  width: calc(100% + 16px);
+  height: calc(100% + 16px);
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 235, 150, 0.6);
+  animation: pulseRing 2.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.6s infinite;
+}
+
+.hotspot-core {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 248, 220, 0.95) 0%, rgba(212, 175, 55, 0.8) 70%, rgba(153, 101, 21, 0.9) 100%);
+  border: 2px solid #FFF;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.9), inset 0 0 8px rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: heartPulse 1.6s ease-in-out infinite;
+  transition: transform 0.2s ease;
+}
+
+.hotspot-button:hover .hotspot-core {
+  transform: scale(1.1);
+}
+
+.seal-pill-badge {
+  margin-top: 16px;
+  background: rgba(107, 29, 47, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(255, 215, 0, 0.7);
+  color: #FFF7D6;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4), 0 0 12px rgba(212, 175, 55, 0.4);
+  white-space: nowrap;
+  animation: gentleFloat 2.6s ease-in-out infinite;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* Golden Flash Transition Overlay */
+.golden-flash-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 230, 0.98) 0%, rgba(255, 223, 120, 0.9) 45%, rgba(212, 175, 55, 0.6) 80%, rgba(255, 200, 100, 0) 100%);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 25;
+  transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Screen 2: Stage & Celebration */
+#screen-celebration-layer {
+  z-index: 10;
+  background-image: url('Dreamy Pink Floral Baby Celebration Scene.png');
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Optional Video Background Layer */
+#bg-video-live {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  pointer-events: none;
+}
+
+#bg-video-live.active {
+  opacity: 1;
+}
+
+/* Canvas Overlay */
+#particle-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Content Container */
+.celebration-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 14px 12px 14px;
+  overflow: hidden;
+}
+
+/* Top Arch Header */
+.top-header {
+  text-align: center;
+  margin-top: 14px;
+  margin-bottom: 8px;
+  padding: 4px 6px;
+  position: relative;
+}
+
+.auspicious-mantra {
+  font-size: 11px;
+  color: #7A2638;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 2px;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
+}
+
+.main-title-maroon {
+  color: #6B1D2F;
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8), 0 0 12px rgba(212, 175, 55, 0.4);
+}
+
+.subtitle-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, rgba(107, 29, 47, 0.9) 0%, rgba(138, 38, 62, 0.9) 100%);
+  color: #FFF8E7;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 12px;
+  border-radius: 9999px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  border: 1px solid rgba(255, 215, 0, 0.6);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.baby-name-banner {
+  font-size: 30px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #FFE58F 0%, #D4AF37 35%, #8B1E3F 70%, #D4AF37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 4px rgba(107, 29, 47, 0.35));
+  line-height: 1.2;
+}
+
+.english-subtitle {
+  font-family: 'Great Vibes', cursive;
+  font-size: 18px;
+  color: #6B1D2F;
+  letter-spacing: 0.5px;
+  margin-top: -2px;
+}
+
+/* Tab Navigation */
+.tabs-scroll-container {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 4px 2px 8px 2px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  z-index: 15;
+}
+
+/* Language Switcher Pill */
+.lang-switch-btn {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  color: #6B1D2F;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.lang-switch-btn:hover {
+  background: #6B1D2F;
+  color: #FFE58F;
+}
+
+/* Gallery Grid */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.gallery-item {
+  position: relative;
+  aspect-ratio: 9 / 16;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1.5px solid rgba(212, 175, 55, 0.4);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+
+.gallery-item:hover {
+  transform: scale(1.03);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to top, rgba(107, 29, 47, 0.85) 0%, transparent 100%);
+  color: #FFF8E7;
+  font-size: 9px;
+  font-weight: 600;
+  padding: 12px 3px 3px 3px;
+  text-align: center;
+}
+
+/* Lightbox Modal */
+.lightbox-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 150;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  padding: 20px;
+}
+
+.lightbox-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox-img {
+  max-width: 90%;
+  max-height: 75vh;
+  border-radius: 20px;
+  border: 3px solid rgba(212, 175, 55, 0.7);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #fff;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.tabs-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.tab-btn {
+  flex: 0 0 auto;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  color: #6B1D2F;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 20px;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(107, 29, 47, 0.08);
+}
+
+.tab-btn.active {
+  background: linear-gradient(135deg, #6B1D2F 0%, #87233B 100%);
+  color: #FFF8E7;
+  border-color: #D4AF37;
+  box-shadow: 0 4px 12px rgba(107, 29, 47, 0.3), 0 0 10px rgba(212, 175, 55, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Smart Safe-Zone Frosted Glass Card */
+.glass-content-card {
+  position: relative;
+  background: rgba(255, 250, 245, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1.5px solid rgba(212, 175, 55, 0.45);
+  border-radius: 24px;
+  box-shadow: 
+    0 12px 30px rgba(107, 29, 47, 0.14),
+    0 2px 8px rgba(0, 0, 0, 0.06),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+  padding: 14px;
+  flex: 1;
+  max-height: 48%;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(212, 175, 55, 0.5) transparent;
+  transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  z-index: 15;
+}
+
+.glass-content-card::-webkit-scrollbar {
+  width: 4px;
+}
+
+.glass-content-card::-webkit-scrollbar-thumb {
+  background-color: rgba(212, 175, 55, 0.5);
+  border-radius: 10px;
+}
+
+/* Card minimized/clean view mode (shows baby with no obstruction) */
+.glass-content-card.collapsed {
+  max-height: 52px;
+  overflow: hidden;
+  opacity: 0.9;
+  background: rgba(255, 250, 245, 0.65);
+}
+
+.tab-pane {
+  display: none;
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+/* Decorative Gold Filigree Divider */
+.gold-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 6px 0 10px 0;
+}
+
+.gold-divider::before,
+.gold-divider::after {
+  content: '';
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.7), transparent);
+}
+
+.gold-divider-icon {
+  color: #D4AF37;
+  font-size: 12px;
+}
+
+/* Countdown Clock Mini Grid */
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin: 10px 0;
+}
+
+.countdown-box {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 12px;
+  padding: 6px 2px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.countdown-number {
+  font-size: 18px;
+  font-weight: 800;
+  color: #6B1D2F;
+  line-height: 1;
+}
+
+.countdown-label {
+  font-size: 9px;
+  color: #7A2638;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+/* Floating Action Dock (Bottom Right / Unobtrusive) */
+.floating-dock {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 25;
+}
+
+.dock-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(212, 175, 55, 0.6);
+  color: #6B1D2F;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(107, 29, 47, 0.2), 0 0 10px rgba(212, 175, 55, 0.25);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 18px;
+}
+
+.dock-btn:hover {
+  transform: scale(1.08);
+  background: #FFF;
+  border-color: #D4AF37;
+}
+
+.dock-btn.active {
+  background: #6B1D2F;
+  color: #FFE58F;
+  border-color: #D4AF37;
+}
+
+/* Rotating Vinyl Record for Music */
+.vinyl-spin {
+  animation: spin 3.5s linear infinite;
+}
+
+.vinyl-paused {
+  animation-play-state: paused;
+}
+
+/* Keyframe Animations */
+@keyframes pulseRing {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.9;
+  }
+  60% {
+    transform: scale(1.4);
+    opacity: 0.35;
+  }
+  100% {
+    transform: scale(1.75);
+    opacity: 0;
+  }
+}
+
+@keyframes heartPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.9), inset 0 0 8px rgba(255, 255, 255, 0.8);
+  }
+  50% {
+    transform: scale(1.08);
+    box-shadow: 0 0 32px rgba(255, 215, 0, 1), 0 0 15px rgba(255, 255, 255, 0.9);
+  }
+}
+
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Confetti particles */
+.confetti-piece {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  pointer-events: none;
+  z-index: 100;
+  animation: fallDown 1.8s ease-out forwards;
+}
+
+@keyframes fallDown {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--tx, 0px), var(--ty, 120px)) rotate(var(--rot, 360deg)) scale(0.3);
+  }
+}
+

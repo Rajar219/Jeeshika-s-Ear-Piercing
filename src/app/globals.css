@@ -1,0 +1,139 @@
+@import "./tamil-fonts.css";
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400;1,600&family=Great+Vibes&family=Pinyon+Script&family=Parisienne&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --royal-blush: #E8B7C4;
+  --dusty-rose: #C97891;
+  --deep-rose: #9B3459;
+  --champagne-gold: #E8D39A;
+  --metallic-gold: #C9A34E;
+  --warm-ivory: #FFF8F0;
+  --font-cormorant: 'Cormorant Garamond', Georgia, serif;
+  --font-playfair: 'Playfair Display', Georgia, serif;
+  --font-great-vibes: 'Great Vibes', cursive;
+  --font-pinyon: 'Pinyon Script', cursive;
+  --font-tamil: 'JeeshikaTamil', sans-serif;
+  --ceremony-title-font: 'JeeshikaNilavu', 'JeeshikaTamil', sans-serif;
+  --baby-name-tamil-font: 'JeeshikaKurinji', 'JeeshikaTamil', sans-serif;
+  --baby-name-en-font: 'Great Vibes', cursive;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: 'JeeshikaTamil', sans-serif;
+}
+
+/* ========================================================
+   CRITICAL GLOBAL TAMIL TYPOGRAPHY RULES
+   - Dedicated global font: JeeshikaTamil (TAU-Ezhil)
+   - Zero tracking / normal letter-spacing (prevents broken vowel marks)
+   - Zero uppercase transformation (preserves complex Indic syllables)
+   - Natural word spacing and balanced line height
+   ======================================================== */
+.font-tamil,
+.font-tamil-serif,
+.font-tamil-sans,
+.font-tamil-body,
+[lang="ta"],
+.tamil-text {
+  font-family: 'JeeshikaTamil', sans-serif !important;
+  letter-spacing: normal !important;
+  word-spacing: normal !important;
+  text-transform: none !important;
+  font-feature-settings: "tml2" 1, "taml" 1, "abvs" 1, "psts" 1, "akhn" 1, "haln" 1 !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* HIGH-IMPACT BOLD DISPLAY TITLE FOR CEREMONY: Nilavu */
+.font-tamil-title,
+.font-tamil-display {
+  font-family: var(--ceremony-title-font) !important;
+  letter-spacing: normal !important;
+  word-spacing: normal !important;
+  text-transform: none !important;
+  font-feature-settings: "tml2" 1, "taml" 1, "abvs" 1, "psts" 1, "akhn" 1, "haln" 1 !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* BABY NAME FONTS: Nilavu for Tamil, Luxury Calligraphic Script for English */
+.font-tamil-names,
+.font-baby-tamil {
+  font-family: var(--baby-name-tamil-font, 'JeeshikaKurinji', sans-serif) !important;
+  letter-spacing: normal !important;
+  word-spacing: normal !important;
+  text-transform: none !important;
+  font-feature-settings: "tml2" 1, "taml" 1, "abvs" 1, "psts" 1, "akhn" 1, "haln" 1 !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-script,
+.font-great-vibes {
+  font-family: 'Great Vibes', cursive !important;
+}
+
+.font-pinyon {
+  font-family: 'Pinyon Script', cursive;
+}
+
+.font-baby-en {
+  font-family: var(--baby-name-en-font, 'Great Vibes', cursive) !important;
+}
+
+.font-tamil-marutham {
+  font-family: 'JeeshikaMarutham', sans-serif !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+}
+
+.font-tamil-kurinji {
+  font-family: 'JeeshikaKurinji', sans-serif !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+}
+
+.font-tamil-mullai {
+  font-family: 'JeeshikaMullai', sans-serif !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+}
+
+.font-tamil-nilavu {
+  font-family: 'JeeshikaNilavu', sans-serif !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+}
+
+.font-tamil-ezhil {
+  font-family: 'JeeshikaEzhil', sans-serif !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.4);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 175, 55, 0.7);
+}
