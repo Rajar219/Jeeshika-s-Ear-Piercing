@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateAudioUI(true);
 
     // Try HTML5 audio file (bgm.mp3 / bgm.wav)
-    audioBgm.volume = 0.45;
+    audioBgm.volume = 0.35;
     const audioPromise = audioBgm.play();
 
     if (audioPromise !== undefined) {

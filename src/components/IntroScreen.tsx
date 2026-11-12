@@ -22,7 +22,7 @@ export const IntroScreen: React.FC<IntroScreenProps> = ({ onComplete, onTransiti
     try {
       audio = new Audio("/audio 1.mp3");
       audio.preload = "auto";
-      try { audio.volume = 0.5; } catch (_) {}
+      try { audio.volume = 0.4; } catch (_) {}
       audio1Ref.current = audio;
     } catch (e) {
       console.warn("Audio 1 init error:", e);
@@ -45,7 +45,7 @@ export const IntroScreen: React.FC<IntroScreenProps> = ({ onComplete, onTransiti
         try {
           audio1Ref.current.pause();
           audio1Ref.current.currentTime = 0;
-          audio1Ref.current.volume = 0.5;
+          audio1Ref.current.volume = 0.4;
         } catch (_) {}
       }
       const vid = videoRef.current;
@@ -125,7 +125,7 @@ export const IntroScreen: React.FC<IntroScreenProps> = ({ onComplete, onTransiti
     // 1. Smoothly fade out Audio 1 over 1000ms
     const audio1 = audio1Ref.current;
     if (audio1) {
-      let initialVol = 0.5;
+      let initialVol = 0.4;
       try { initialVol = audio1.volume; } catch (_) {}
       const steps = 20;
       const stepTime = 50; // 1000ms total fade-out
@@ -145,7 +145,7 @@ export const IntroScreen: React.FC<IntroScreenProps> = ({ onComplete, onTransiti
           if (audio1) {
             try {
               audio1.pause();
-              audio1.volume = 0.5; // Reset for potential replay
+              audio1.volume = 0.4; // Reset for potential replay
             } catch (_) {}
           }
         }

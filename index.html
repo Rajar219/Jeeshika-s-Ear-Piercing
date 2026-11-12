@@ -679,7 +679,7 @@
 
           <!-- Venue -->
           <div class="bg-gradient-to-r from-[#FFF5F7] via-white to-[#FFF5F7] p-3.5 rounded-2xl border border-[#E8D39A]/75 shadow-sm flex items-start gap-3">
-            <span class="text-2xl mt-0.5">📍</span>
+            <span class="text-2xl mt-0.5">🛕</span>
             <div>
               <span class="font-bold text-[#6B1D2F] block font-tamil-display text-[14px] leading-snug">
                 ஶ்ரீ அங்காளபரமேஸ்வரி கோவில், கொக்கலை, மரப்பாறை, தமிழ்நாடு – 637410
@@ -1073,8 +1073,8 @@
           <h4 class="text-sm font-cormorant font-black tracking-widest text-[#6B1D2F] uppercase">
             BLESSED ❤️ CHERISHED ❤️ ALWAYS LOVED
           </h4>
-          <p class="text-[13px] font-tamil-display font-bold text-[#9D174D] mt-1.5">
-            எங்கள் குட்டி தேவதை ✨ | 18.01.2027 • கொக்கலை, மரப்பாறை
+          <p class="text-[13px] font-tamil-display font-bold text-[#9D174D] mt-1.5 flex items-center justify-center gap-1.5">
+            <span>🛕</span> <span>18.01.2027 • கொக்கலை, மரப்பாறை</span>
           </p>
           <div class="flex items-center justify-center my-2 pointer-events-none">
             <svg width="180" height="18" viewBox="0 0 240 28" fill="none">
@@ -1134,8 +1134,8 @@
       const audioBgm = document.getElementById('audio-bgm');
 
       // Soften volumes for gentle celebratory ambiance
-      if (audioSeal) audioSeal.volume = 0.5;
-      if (audioBgm) audioBgm.volume = 0.45;
+      if (audioSeal) audioSeal.volume = 0.4;
+      if (audioBgm) audioBgm.volume = 0.35;
       const canvas = document.getElementById('particle-canvas');
       const celebrationCanvas = document.getElementById('celebration-canvas');
       const scratchCanvas = document.getElementById('scratch-canvas');
@@ -1149,7 +1149,7 @@
       let audioFadeInInterval = null;
       let audioGapTimer = null;
 
-      function fadeOutAudio(audio, durationMs = 1000, defaultVol = 0.5) {
+      function fadeOutAudio(audio, durationMs = 1000, defaultVol = 0.4) {
         if (!audio) return;
         if (audioFadeOutInterval) clearInterval(audioFadeOutInterval);
         const steps = 20;
@@ -1170,7 +1170,7 @@
         }, intervalTime);
       }
 
-      function fadeInAudio(audio, durationMs = 1500, targetVol = 0.45) {
+      function fadeInAudio(audio, durationMs = 1500, targetVol = 0.35) {
         if (!audio) return;
         if (audioFadeInInterval) clearInterval(audioFadeInInterval);
         audio.volume = 0;
@@ -1254,7 +1254,7 @@
         if (audioGapTimer) clearTimeout(audioGapTimer);
         audioGapTimer = setTimeout(() => {
           if (!document.hidden && document.visibilityState === 'visible') {
-            fadeInAudio(audioBgm, 1500, 0.45);
+            fadeInAudio(audioBgm, 1500, 0.35);
           }
           audioGapTimer = null;
         }, 2500);
@@ -1291,14 +1291,14 @@
           }
           if (audioBgm) {
             audioBgm.pause();
-            audioBgm.volume = 0.45;
+            audioBgm.volume = 0.35;
             isMusicPlaying = false;
             if (audioIcon) audioIcon.textContent = '🔇';
           }
           if (audioSeal) {
             audioSeal.pause();
             audioSeal.currentTime = 0;
-            audioSeal.volume = 0.5;
+            audioSeal.volume = 0.4;
           }
           const heroVideo = document.getElementById('heroVideo');
           if (heroVideo) {
@@ -1354,7 +1354,7 @@
           try {
             audioBgm.pause();
             audioBgm.currentTime = 0;
-            audioBgm.volume = 0.45;
+            audioBgm.volume = 0.35;
           } catch (_) {}
           isMusicPlaying = false;
           if (audioIcon) audioIcon.textContent = '🔇';
@@ -1363,7 +1363,7 @@
           try {
             audioSeal.pause();
             audioSeal.currentTime = 0;
-            audioSeal.volume = 0.5;
+            audioSeal.volume = 0.4;
           } catch (_) {}
         }
       }
@@ -1390,7 +1390,7 @@
               clearInterval(audioFadeInInterval);
               audioFadeInInterval = null;
             }
-            audioBgm.volume = 0.45;
+            audioBgm.volume = 0.35;
             audioBgm.play().then(() => {
               isMusicPlaying = true;
               audioIcon.textContent = '🔊';

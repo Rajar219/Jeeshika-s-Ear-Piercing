@@ -82,7 +82,7 @@ export const EventDetailsSection: React.FC = () => {
 
           {/* Venue */}
           <div className="bg-gradient-to-r from-[#FFF5F7] via-white to-[#FFF5F7] p-3.5 rounded-2xl border border-[#E8D39A]/75 shadow-sm flex items-start gap-3">
-            <span className="text-2xl mt-0.5">📍</span>
+            <span className="text-2xl mt-0.5">🛕</span>
             <div>
               <span className="font-bold text-[#6B1D2F] block font-tamil text-[14px] leading-snug">
                 {INVITATION_CONFIG.event.tamilFullVenueDisplay}

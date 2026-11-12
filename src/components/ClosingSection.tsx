@@ -37,7 +37,7 @@ export const ClosingSection: React.FC<ClosingSectionProps> = ({ onReplay }) => {
           <h4 className="text-sm font-serif font-black tracking-widest text-[#6B1D2F] uppercase">
             {INVITATION_CONFIG.verses.closingMotto}
           </h4>
-          <p className="text-[13px] font-tamil font-bold text-[#9D174D] mt-1.5">
+          <p className="text-[13px] font-tamil font-bold text-[#9D174D] mt-1.5 flex items-center justify-center gap-1.5">
             {INVITATION_CONFIG.verses.tamilClosingMotto}
           </p>
           <FloralHeaderDivider className="my-3" />

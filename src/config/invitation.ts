@@ -62,7 +62,7 @@ export const INVITATION_CONFIG = {
     englishWelcome: "We warmly invite you and your family to the Ear Piercing Ceremony of our beloved daughter.",
     tamilWelcome: "எங்கள் அன்பு மகளின் செவிப்பொன் சேர்ப்பு விழாவிற்கு குடும்பத்துடன் வருகை தந்து வாழ்த்தி சிறப்பிக்குமாறு அன்புடன் கேட்டுக்கொள்கிறோம்.",
     closingMotto: "BLESSED ❤️ CHERISHED ❤️ ALWAYS LOVED",
-    tamilClosingMotto: "எங்கள் குட்டி தேவதை ✨ | 18.01.2027 • கொக்கலை, மரப்பாறை",
+    tamilClosingMotto: "🛕 18.01.2027 • கொக்கலை, மரப்பாறை",
   },
 
   // 4. Scratch Section

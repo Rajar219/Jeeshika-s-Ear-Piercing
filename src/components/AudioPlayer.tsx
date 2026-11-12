@@ -23,8 +23,8 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ autoPlay = false }) =>
       try {
         audio.pause();
         audio.currentTime = 0;
-        audio.volume = 0.45;
-      } catch (_) {}
+        audio.volume = 0.35;
+      } catch (_) { }
     }
     // Prevent autoPlay from automatically resuming when returning to the app
     hasAutoStartedRef.current = true;
@@ -38,7 +38,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ autoPlay = false }) =>
       audio = new Audio("/audio 2.mp3");
       audio.loop = true;
       audio.preload = "auto";
-      try { audio.volume = 0.45; } catch (_) {}
+      try { audio.volume = 0.35; } catch (_) { }
       audioRef.current = audio;
     } catch (e) {
       console.warn("Audio 2 init error:", e);
@@ -73,7 +73,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ autoPlay = false }) =>
         fadeInIntervalRef.current = null;
       }
       if (audio) {
-        try { audio.pause(); } catch (_) {}
+        try { audio.pause(); } catch (_) { }
       }
       audioRef.current = null;
     };
@@ -90,12 +90,12 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ autoPlay = false }) =>
 
       hasAutoStartedRef.current = true;
       const audio = audioRef.current;
-      try { audio.volume = 0; } catch (_) {}
+      try { audio.volume = 0; } catch (_) { }
 
       audio.play().then(() => {
         setIsPlaying(true);
-        // Smooth crossfade: ramp volume from 0 to 0.45 over 1800ms
-        const targetVol = 0.45;
+        // Smooth crossfade: ramp volume from 0 to 0.35 over 1800ms
+        const targetVol = 0.35;
         const steps = 30;
         const stepTime = 60; // 1800ms total
         let step = 0;
@@ -105,7 +105,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ autoPlay = false }) =>
           if (audio) {
             try {
               audio.volume = Math.min(targetVol, (step / steps) * targetVol);
-            } catch (_) {}
+            } catch (_) { }
           }
           if (step >= steps) {
             if (fadeInIntervalRef.current) {
@@ -113,7 +113,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ autoPlay = false }) =>
               fadeInIntervalRef.current = null;
             }
             if (audio) {
-              try { audio.volume = targetVol; } catch (_) {}
+              try { audio.volume = targetVol; } catch (_) { }
             }
           }
         }, stepTime);
@@ -138,10 +138,10 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ autoPlay = false }) =>
     if (isPlaying) {
       try {
         audio.pause();
-      } catch (_) {}
+      } catch (_) { }
       setIsPlaying(false);
     } else {
-      audio.volume = 0.45;
+      audio.volume = 0.35;
       audio.play().then(() => {
         setIsPlaying(true);
       }).catch((e) => {
@@ -153,11 +153,10 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ autoPlay = false }) =>
   return (
     <button
       onClick={toggleMusic}
-      className={`fixed top-4 right-4 z-40 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold transition-all shadow-md backdrop-blur-md border ${
-        isPlaying 
-          ? "bg-[#6B1D2F] border-[#D4AF37] text-[#FFF8E7] shadow-[0_0_12px_rgba(212,175,55,0.4)]" 
-          : "bg-white/80 border-[#C9A34E]/50 text-[#6B1D2F] hover:bg-white"
-      }`}
+      className={`fixed top-4 right-4 z-40 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold transition-all shadow-md backdrop-blur-md border ${isPlaying
+        ? "bg-[#6B1D2F] border-[#D4AF37] text-[#FFF8E7] shadow-[0_0_12px_rgba(212,175,55,0.4)]"
+        : "bg-white/80 border-[#C9A34E]/50 text-[#6B1D2F] hover:bg-white"
+        }`}
       title={isPlaying ? "Mute Music" : "Play Festive Music"}
       aria-label={isPlaying ? "Mute Music" : "Play Festive Music"}
     >
