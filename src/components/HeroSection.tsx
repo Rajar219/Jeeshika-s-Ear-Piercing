@@ -107,11 +107,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ active = true }) => {
       </div>
 
       {/* Top Homepage Content Hierarchy */}
-      <div className="relative z-10 pt-3 flex flex-col items-center max-w-[390px] w-full mx-auto px-1">
+      <div className="relative z-10 pt-4 sm:pt-3 flex flex-col items-center max-w-[390px] w-full mx-auto px-1">
         
         {/* Small Top Heading: அன்புடன் அழைக்கின்றோம் (Noto Sans Tamil 600, ZERO tracking) */}
         <div 
-          className="inline-block bg-gradient-to-r from-[#6B1D2F] via-[#8A263E] to-[#6B1D2F] text-[#FFF8E7] border-2 border-[#D4AF37] px-4 py-0.5 sm:px-5 sm:py-1 rounded-full shadow-[0_2px_10px_rgba(212,175,55,0.3)] text-[11px] sm:text-xs font-semibold mb-2"
+          className="inline-block bg-gradient-to-r from-[#6B1D2F] via-[#8A263E] to-[#6B1D2F] text-[#FFF8E7] border-2 border-[#D4AF37] px-3.5 py-0.5 sm:px-5 sm:py-1 rounded-full shadow-[0_2px_10px_rgba(212,175,55,0.3)] text-[10.5px] sm:text-xs font-semibold mb-2"
           style={{ fontFamily: "'Noto Sans Tamil', 'JeeshikaTamil', sans-serif", fontWeight: 600, letterSpacing: "normal" }}
         >
           {INVITATION_CONFIG.baby.tamilBadge}
