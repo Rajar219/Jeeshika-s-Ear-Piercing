@@ -45,7 +45,7 @@ export const EventDetailsSection: React.FC = () => {
           <span className="text-[10px] font-bold tracking-[0.2em] text-[#9B3459] uppercase block font-serif">
             THE CELEBRATION
           </span>
-          <h3 className="text-2xl md:text-3xl font-tamil font-bold text-[#6B1D2F] mt-1 drop-shadow-sm">
+          <h3 className="text-2xl md:text-3xl font-tamil-title font-bold text-[#6B1D2F] mt-1 drop-shadow-sm">
             செவிப்பொன் சேர்ப்பு சுப நிகழ்வு
           </h3>
           <FloralHeaderDivider className="my-2" />

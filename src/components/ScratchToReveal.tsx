@@ -296,7 +296,7 @@ export const ScratchToReveal: React.FC<ScratchProps> = ({ onCelebrationTrigger }
         <span className="text-[10px] font-bold tracking-[0.2em] text-[#9B3459] uppercase block font-serif">
           {INVITATION_CONFIG.scratch.englishHeading}
         </span>
-        <h3 className="text-2xl font-tamil font-bold text-[#6B1D2F] mt-1 leading-snug">
+        <h3 className="text-2xl font-tamil-title font-bold text-[#6B1D2F] mt-1 leading-snug">
           {INVITATION_CONFIG.scratch.heading}
         </h3>
         <p className="text-xs text-[#7A2638] font-tamil font-normal mt-1">

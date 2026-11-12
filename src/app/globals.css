@@ -16,9 +16,9 @@
   --font-playfair: 'Playfair Display', Georgia, serif;
   --font-great-vibes: 'Great Vibes', cursive;
   --font-pinyon: 'Pinyon Script', cursive;
-  --font-tamil: 'Noto Sans Tamil', 'JeeshikaTamil', sans-serif;
-  --font-tamil-supporting: 'Noto Sans Tamil', 'JeeshikaTamil', sans-serif;
-  --ceremony-title-font: 'JeeshikaNilavu', 'Anek Tamil', 'JeeshikaTamil', sans-serif;
+  --font-tamil: 'JeeshikaMarutham', 'Anek Tamil', 'JeeshikaTamil', 'Noto Sans Tamil', serif;
+  --font-tamil-supporting: 'JeeshikaMarutham', 'Anek Tamil', 'JeeshikaTamil', 'Noto Sans Tamil', serif;
+  --ceremony-title-font: 'JeeshikaMarutham', 'Anek Tamil', 'JeeshikaNilavu', serif;
   --baby-name-tamil-font: 'Anek Tamil', 'JeeshikaMarutham', 'JeeshikaTamil', sans-serif;
   --baby-name-en-font: 'Great Vibes', cursive;
 }
@@ -32,12 +32,12 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  font-family: 'Noto Sans Tamil', 'JeeshikaTamil', sans-serif;
+  font-family: 'JeeshikaMarutham', 'Anek Tamil', 'JeeshikaTamil', 'Noto Sans Tamil', serif;
 }
 
 /* ========================================================
    CRITICAL GLOBAL TAMIL TYPOGRAPHY RULES
-   - Dedicated global font: Noto Sans Tamil & JeeshikaTamil
+   - Dedicated global font: JeeshikaMarutham (Classic Festive Serif) & Anek Tamil
    - Zero tracking / normal letter-spacing (prevents broken vowel marks)
    - Zero uppercase transformation (preserves complex Indic syllables)
    - Natural word spacing and balanced line height
@@ -49,7 +49,7 @@ body {
 .font-tamil-supporting,
 [lang="ta"],
 .tamil-text {
-  font-family: 'Noto Sans Tamil', 'JeeshikaTamil', sans-serif !important;
+  font-family: 'JeeshikaMarutham', 'Anek Tamil', 'JeeshikaTamil', 'Noto Sans Tamil', serif !important;
   letter-spacing: normal !important;
   word-spacing: normal !important;
   text-transform: none !important;
@@ -57,10 +57,11 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* HIGH-IMPACT BOLD DISPLAY TITLE FOR CEREMONY: Nilavu */
+/* HIGH-IMPACT BOLD DISPLAY TITLE FOR CEREMONY & CARDS: JeeshikaMarutham / Nilavu / Anek */
 .font-tamil-title,
-.font-tamil-display {
-  font-family: var(--ceremony-title-font) !important;
+.font-tamil-display,
+h3.font-tamil {
+  font-family: 'JeeshikaMarutham', 'Anek Tamil', 'JeeshikaNilavu', serif !important;
   letter-spacing: normal !important;
   word-spacing: normal !important;
   text-transform: none !important;

@@ -21,7 +21,7 @@ export const GrandparentsSection: React.FC = () => {
           <span className="text-[10px] font-bold tracking-[0.2em] text-[#9B3459] uppercase block font-serif">
             WITH THE BLESSINGS OF GRANDPARENTS
           </span>
-          <h3 className="text-2xl font-tamil font-bold text-[#6B1D2F] mt-1 drop-shadow-sm">
+          <h3 className="text-2xl font-tamil-title font-bold text-[#6B1D2F] mt-1 drop-shadow-sm">
             தாத்தா – பாட்டி ஆசியுடன்
           </h3>
           <FloralHeaderDivider className="my-2" />
@@ -37,7 +37,7 @@ export const GrandparentsSection: React.FC = () => {
               <span className="text-[12px] font-serif font-bold text-[#6B1D2F] block tracking-wide">
                 {gp.names}
               </span>
-              <span className="text-[14px] font-tamil font-bold text-[#9D174D] mt-1 block">
+              <span className="text-[15px] font-tamil font-bold text-[#9D174D] mt-1 block">
                 {gp.tamilNames}
               </span>
             </div>

@@ -21,7 +21,7 @@ export const FamilySection: React.FC = () => {
           <span className="text-[10px] font-bold tracking-[0.2em] text-[#9B3459] uppercase block font-serif">
             WITH LOVE & WARM REGARDS
           </span>
-          <h3 className="text-2xl font-tamil font-bold text-[#6B1D2F] mt-1 drop-shadow-sm">
+          <h3 className="text-2xl font-tamil-title font-bold text-[#6B1D2F] mt-1 drop-shadow-sm">
             அன்புடன் அழைக்கும்
           </h3>
           <FloralHeaderDivider className="my-2" />
@@ -42,7 +42,7 @@ export const FamilySection: React.FC = () => {
                   <span className="font-serif font-bold text-[#7A2638] text-[11px] tracking-wide">
                     {fam.relation}
                   </span>
-                  <span className="text-[#9B3459] text-[11px] font-tamil font-semibold">
+                  <span className="text-[#9B3459] text-[11px] font-tamil font-bold">
                     ({fam.tamilRelation})
                   </span>
                 </div>
@@ -54,7 +54,7 @@ export const FamilySection: React.FC = () => {
 
               {/* Tamil Names - Dedicated Global JeeshikaTamil Font */}
               <div className="text-right pl-2 border-l border-[#E8D39A]/40">
-                <span className="font-tamil font-bold text-[#521120] text-[13px] block leading-snug">
+                <span className="font-tamil font-bold text-[#521120] text-[14px] block leading-snug">
                   {fam.tamilNames}
                 </span>
               </div>
@@ -68,7 +68,7 @@ export const FamilySection: React.FC = () => {
           <p className="text-xs font-serif font-bold text-[#6B1D2F] tracking-wide">
             {INVITATION_CONFIG.familyClosingNote}
           </p>
-          <p className="text-[13px] font-tamil font-bold text-[#9D174D] mt-1">
+          <p className="text-[14px] font-tamil font-bold text-[#9D174D] mt-1">
             {INVITATION_CONFIG.tamilFamilyClosingNote}
           </p>
         </div>

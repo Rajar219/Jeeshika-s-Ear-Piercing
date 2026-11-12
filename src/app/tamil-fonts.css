@@ -98,7 +98,7 @@
 .font-tamil,
 .font-tamil-body,
 [lang="ta"] {
-  font-family: 'JeeshikaTamil', sans-serif !important;
+  font-family: 'JeeshikaMarutham', 'Anek Tamil', 'JeeshikaTamil', serif !important;
   letter-spacing: normal !important;
   word-spacing: normal !important;
   text-transform: none !important;
@@ -109,7 +109,7 @@
 /* CEREMONY TITLE FONT: High-Impact Bold Display */
 .font-tamil-title,
 .font-tamil-display {
-  font-family: var(--ceremony-title-font) !important;
+  font-family: 'JeeshikaMarutham', 'Anek Tamil', 'JeeshikaNilavu', serif !important;
   letter-spacing: normal !important;
   word-spacing: normal !important;
   text-transform: none !important;

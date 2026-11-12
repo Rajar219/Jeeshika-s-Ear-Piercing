@@ -53,7 +53,7 @@
       --metallic-gold: #C9A34E;
       --warm-ivory: #FFF8F0;
       --maroon-royal: #6B1D2F;
-      --ceremony-title-font: 'JeeshikaNilavu', 'Anek Tamil', 'JeeshikaTamil', sans-serif;
+      --ceremony-title-font: 'JeeshikaMarutham', 'Anek Tamil', 'JeeshikaNilavu', serif;
       --baby-name-tamil-font: 'Anek Tamil', 'JeeshikaMarutham', 'JeeshikaTamil', sans-serif;
     }
 
@@ -66,7 +66,7 @@
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Noto Sans Tamil', 'JeeshikaTamil', sans-serif;
+      font-family: 'JeeshikaMarutham', 'Anek Tamil', 'JeeshikaTamil', 'Noto Sans Tamil', serif;
       background: linear-gradient(180deg, #FDF0F3 0%, #FAF3F5 50%, #F5E6EB 100%);
       color: #333;
       overflow-x: hidden;
@@ -97,14 +97,14 @@
       font-family: 'Playfair Display', Georgia, serif;
     }
 
-    /* CRITICAL GLOBAL TAMIL TYPOGRAPHY: Noto Sans Tamil & JeeshikaTamil, ZERO tracking, ZERO uppercase */
+    /* CRITICAL GLOBAL TAMIL TYPOGRAPHY: JeeshikaMarutham & Anek Tamil, ZERO tracking, ZERO uppercase */
     .font-tamil,
     .font-tamil-serif,
     .font-tamil-sans,
     .font-tamil-body,
     .font-tamil-supporting,
     [lang="ta"] {
-      font-family: 'Noto Sans Tamil', 'JeeshikaTamil', sans-serif !important;
+      font-family: 'JeeshikaMarutham', 'Anek Tamil', 'JeeshikaTamil', 'Noto Sans Tamil', serif !important;
       letter-spacing: normal !important;
       word-spacing: normal !important;
       text-transform: none !important;
@@ -112,10 +112,11 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* CEREMONY TITLE FONT: Nilavu Bold Headline */
+    /* CEREMONY TITLE FONT: Marutham / Nilavu / Anek Bold Headline */
     .font-tamil-title,
-    .font-tamil-display {
-      font-family: var(--ceremony-title-font, 'JeeshikaNilavu', sans-serif) !important;
+    .font-tamil-display,
+    h3.font-tamil {
+      font-family: 'JeeshikaMarutham', 'Anek Tamil', 'JeeshikaNilavu', serif !important;
       letter-spacing: normal !important;
       word-spacing: normal !important;
       text-transform: none !important;
@@ -856,7 +857,7 @@
             <span class="text-[12px] font-cormorant font-bold text-[#6B1D2F] block tracking-wide">
               Thiru. Pazhanivappan – Thirumathi. Pushpalata
             </span>
-            <span class="text-[13px] font-tamil font-bold text-[#9D174D] mt-1 block">
+            <span class="text-[15px] font-tamil font-bold text-[#9D174D] mt-1 block">
               திரு. பழனியப்பன் – திருமதி. புஷ்பலதா
             </span>
           </div>
@@ -865,7 +866,7 @@
             <span class="text-[12px] font-cormorant font-bold text-[#6B1D2F] block tracking-wide">
               (Late) Thiru. Tamil Arasu – Thirumathi. Usha
             </span>
-            <span class="text-[13px] font-tamil font-bold text-[#9D174D] mt-1 block">
+            <span class="text-[15px] font-tamil font-bold text-[#9D174D] mt-1 block">
               (லேட்) திரு. தமிழரசு – திருமதி. உஷா
             </span>
           </div>
@@ -947,7 +948,7 @@
               <span class="font-cormorant text-[#9D174D] font-bold text-[12px] block ml-3">Suthakar – Lakshmi</span>
             </div>
             <div class="text-right pl-2 border-l border-[#E8D39A]/40">
-              <span class="font-tamil font-bold text-[#521120] text-[13px] block leading-snug">சுதாகர் – லக்ஷ்மி</span>
+              <span class="font-tamil font-bold text-[#521120] text-[14px] block leading-snug">சுதாகர் – லக்ஷ்மி</span>
             </div>
           </div>
 
@@ -961,7 +962,7 @@
               <span class="font-cormorant text-[#9D174D] font-bold text-[12px] block ml-3">Sarathkumar – Dharani</span>
             </div>
             <div class="text-right pl-2 border-l border-[#E8D39A]/40">
-              <span class="font-tamil font-bold text-[#521120] text-[13px] block leading-snug">சரத்குமார் – தாரணி</span>
+              <span class="font-tamil font-bold text-[#521120] text-[14px] block leading-snug">சரத்குமார் – தாரணி</span>
             </div>
           </div>
 
@@ -975,7 +976,7 @@
               <span class="font-cormorant text-[#9D174D] font-bold text-[12px] block ml-3">Meera</span>
             </div>
             <div class="text-right pl-2 border-l border-[#E8D39A]/40">
-              <span class="font-tamil font-bold text-[#521120] text-[13px] block leading-snug">மீரா</span>
+              <span class="font-tamil font-bold text-[#521120] text-[14px] block leading-snug">மீரா</span>
             </div>
           </div>
 
@@ -989,7 +990,7 @@
               <span class="font-cormorant text-[#9D174D] font-bold text-[12px] block ml-3">Omprakash – Ragavi</span>
             </div>
             <div class="text-right pl-2 border-l border-[#E8D39A]/40">
-              <span class="font-tamil font-bold text-[#521120] text-[13px] block leading-snug">ஓம் பிரகாஷ் – ராகவி</span>
+              <span class="font-tamil font-bold text-[#521120] text-[14px] block leading-snug">ஓம் பிரகாஷ் – ராகவி</span>
             </div>
           </div>
 
@@ -1003,7 +1004,7 @@
               <span class="font-cormorant text-[#9D174D] font-bold text-[12px] block ml-3">Yuga Velan</span>
             </div>
             <div class="text-right pl-2 border-l border-[#E8D39A]/40">
-              <span class="font-tamil font-bold text-[#521120] text-[13px] block leading-snug">யுக வேலன்</span>
+              <span class="font-tamil font-bold text-[#521120] text-[14px] block leading-snug">யுக வேலன்</span>
             </div>
           </div>
 
@@ -1013,7 +1014,7 @@
           <p class="text-xs font-cormorant font-bold text-[#6B1D2F] tracking-wide">
             And Friends & Family.
           </p>
-          <p class="text-[13px] font-tamil-display font-bold text-[#9D174D] mt-1">
+          <p class="text-[14px] font-tamil-display font-bold text-[#9D174D] mt-1">
             மற்றும் உறவினர்கள், நண்பர்கள்.
           </p>
         </div>
