@@ -79,15 +79,14 @@ export const CountdownSection: React.FC = () => {
   }, []);
 
   return (
-    <section 
+    <section
       ref={sectionRef}
-      className={`relative px-3.5 py-4 sm:p-6 flex flex-col items-center my-3 transition-all duration-700 ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-      }`}
+      className={`relative px-3.5 py-4 sm:p-6 flex flex-col items-center my-3 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+        }`}
     >
       {/* Luxury Glassmorphic Countdown Card */}
       <div className="w-full max-w-[390px] bg-gradient-to-b from-[#FFFDF9]/95 via-[#FFF6F8]/95 to-[#FFF0F4]/95 backdrop-blur-md border border-[#D4AF37]/55 rounded-3xl px-4 py-5 sm:p-6 shadow-[0_16px_36px_rgba(107,29,47,0.12)] relative overflow-hidden text-center">
-        
+
         {/* Botanical Floral Corner Accents */}
         <FloralCornerCluster position="top-right" size={65} />
         <FloralCornerCluster position="bottom-left" size={60} />
@@ -119,7 +118,7 @@ export const CountdownSection: React.FC = () => {
           /* Live 4-Unit Countdown Timer */
           <div className="relative z-10">
             <div className="grid grid-cols-4 gap-2 sm:gap-2.5">
-              
+
               {/* Days */}
               <div className="bg-gradient-to-b from-white to-[#FFF5F7] border border-[#E8D39A]/80 rounded-2xl p-2 sm:p-2.5 shadow-sm flex flex-col items-center">
                 <span className="text-xl sm:text-2xl font-serif font-black text-[#6B1D2F] leading-none drop-shadow-sm">

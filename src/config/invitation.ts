@@ -79,12 +79,12 @@ export const INVITATION_CONFIG = {
   // 5. Grandparents' Blessings
   grandparents: [
     {
-      names: "(Late) Thiru. Tamil Arasu – Thirumathi. Usha",
-      tamilNames: "(லேட்) திரு. தமிழரசு – திருமதி. உஷா",
+      names: "Thiru. Pazhaniyappan – Thirumathi. Pushpalata",
+      tamilNames: "திரு. பழனியப்பன் – திருமதி. புஷ்பலதா",
     },
     {
-      names: "Thiru. Pazhanivappan – Thirumathi. Pushpalata",
-      tamilNames: "திரு. பழனியப்பன் – திருமதி. புஷ்பலதா",
+      names: "(Late) Thiru. Tamil Arasu – Thirumathi. Usha",
+      tamilNames: "(லேட்) திரு. தமிழரசு – திருமதி. உஷா",
     }
   ],
 
