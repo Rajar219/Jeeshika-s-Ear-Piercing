@@ -27,34 +27,36 @@ export const FamilySection: React.FC = () => {
           <FloralHeaderDivider className="my-2" />
         </div>
 
-        {/* Family Members List - Refined Blush-Pink & Champagne Gold (NO MINT GREEN) */}
+        {/* Family Members List - Refined Blush-Pink & Champagne Gold */}
         <div className="space-y-3 relative z-10 text-xs">
           
           {INVITATION_CONFIG.family.map((fam, idx) => (
             <div 
               key={idx}
-              className="group bg-gradient-to-r from-[#FFF5F7] via-white to-[#FFF5F7] p-3 rounded-2xl border border-[#E8D39A]/75 shadow-[0_2px_8px_rgba(155,52,89,0.04)] hover:shadow-[0_4px_12px_rgba(212,175,55,0.15)] transition-all duration-300 flex items-center justify-between gap-2.5"
+              className="group bg-gradient-to-r from-[#FFF5F7] via-white to-[#FFF5F7] px-3.5 py-2.5 rounded-2xl border border-[#E8D39A]/75 shadow-[0_2px_8px_rgba(155,52,89,0.04)] hover:shadow-[0_4px_12px_rgba(212,175,55,0.15)] transition-all duration-300 space-y-1.5"
             >
-              <div className="flex-1">
-                {/* Relationship Tag */}
-                <div className="flex items-center gap-1.5 mb-0.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]"></span>
-                  <span className="font-serif font-bold text-[#7A2638] text-[11px] tracking-wide">
+              {/* Line 1: English Relation & English Names in the SAME line */}
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center gap-1.5 min-w-0">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] flex-shrink-0"></span>
+                  <span className="font-serif font-bold text-[#7A2638] text-[11px] sm:text-xs tracking-wide whitespace-nowrap">
                     {fam.relation}
                   </span>
-                  <span className="text-[#9B3459] text-[11px] font-tamil font-bold">
-                    ({fam.tamilRelation})
-                  </span>
                 </div>
-                {/* English Names */}
-                <span className="font-serif text-[#9D174D] font-bold text-[12px] block ml-3">
+                <span className="font-serif text-[#9D174D] font-bold text-[12px] sm:text-[13px] whitespace-nowrap text-right">
                   {fam.names}
                 </span>
               </div>
 
-              {/* Tamil Names - Dedicated Global JeeshikaTamil Font */}
-              <div className="text-right pl-2 border-l border-[#E8D39A]/40">
-                <span className="font-tamil font-bold text-[#521120] text-[14px] block leading-snug">
+              {/* Delicate Gold Accent Divider */}
+              <div className="border-t border-[#E8D39A]/40"></div>
+
+              {/* Line 2: Tamil Relation & Tamil Names in the SAME line */}
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-[#9B3459] text-[12px] font-tamil font-bold whitespace-nowrap">
+                  {fam.tamilRelation}
+                </span>
+                <span className="font-tamil font-bold text-[#521120] text-[14px] whitespace-nowrap text-right">
                   {fam.tamilNames}
                 </span>
               </div>
