@@ -13,6 +13,7 @@ import { ClosingSection } from "@/components/ClosingSection";
 import { ParticleCanvas } from "@/components/ParticleCanvas";
 import { AudioPlayer } from "@/components/AudioPlayer";
 import { BotanicalVineConnector } from "@/components/FloralDecorations";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
 
 export default function Home() {
   const [introCompleted, setIntroCompleted] = useState(false);
@@ -83,22 +84,28 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-[#FDF0F3] via-[#FAF3F5] to-[#F5E6EB] flex items-center justify-center p-0 md:py-8">
+    <main translate="no" className="notranslate min-h-screen bg-gradient-to-b from-[#FDF0F3] via-[#FAF3F5] to-[#F5E6EB] flex items-center justify-center p-0 md:py-8">
       
       {/* Centered 9:16 Mobile Portrait Showcase Frame on Desktop / Full Screen on Mobile */}
-      <div className="relative w-full h-full max-w-[430px] min-h-screen md:min-h-[880px] md:max-h-[92vh] md:aspect-[9/16] bg-[#FFF8F0] md:rounded-[36px] md:border-4 md:border-[#D4AF37]/65 shadow-[0_16px_48px_rgba(107,29,47,0.12),0_0_24px_rgba(212,175,55,0.22)] overflow-x-hidden overflow-y-auto scroll-smooth">
+      <div translate="no" className="notranslate relative w-full h-full max-w-[430px] min-h-screen md:min-h-[880px] md:max-h-[92vh] md:aspect-[9/16] bg-[#FFF8F0] md:rounded-[36px] md:border-4 md:border-[#D4AF37]/65 shadow-[0_16px_48px_rgba(107,29,47,0.12),0_0_24px_rgba(212,175,55,0.22)] overflow-x-hidden overflow-y-auto scroll-smooth">
         
         {/* Floating Ambient Particle Canvas */}
-        <ParticleCanvas />
+        <ErrorBoundary>
+          <ParticleCanvas />
+        </ErrorBoundary>
 
         {/* Floating Festive Audio Player (Controlled by Intro Transition & Top Button) */}
-        <AudioPlayer autoPlay={bgmActive} />
+        <ErrorBoundary>
+          <AudioPlayer autoPlay={bgmActive} />
+        </ErrorBoundary>
 
         {/* Full-Page Celebration Fireworks Canvas (Triggered on Scratch Completion) */}
-        <FullPageCelebration 
-          active={celebrationActive} 
-          onFinish={() => setCelebrationActive(false)} 
-        />
+        <ErrorBoundary>
+          <FullPageCelebration 
+            active={celebrationActive} 
+            onFinish={() => setCelebrationActive(false)} 
+          />
+        </ErrorBoundary>
 
         {/* Exact Invitation Flow */}
         <div className="relative z-10 flex flex-col">
@@ -139,10 +146,12 @@ export default function Home() {
 
         {/* 1. Cinematic Heart-Seal Intro Overlay */}
         {!introCompleted && (
-          <IntroScreen 
-            onTransitionStart={handleTransitionStart}
-            onComplete={() => setIntroCompleted(true)} 
-          />
+          <ErrorBoundary>
+            <IntroScreen 
+              onTransitionStart={handleTransitionStart}
+              onComplete={() => setIntroCompleted(true)} 
+            />
+          </ErrorBoundary>
         )}
 
       </div>

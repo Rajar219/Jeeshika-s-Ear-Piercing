@@ -27,8 +27,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ta">
+    <html lang="ta" translate="no" className="notranslate" suppressHydrationWarning>
       <head>
+        <meta name="google" content="notranslate" />
+        <meta name="googlebot" content="notranslate" />
+        <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
@@ -36,7 +39,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="antialiased bg-[#FAF3F5] text-gray-800 selection:bg-[#E8B7C4] selection:text-[#521120]">
+      <body className="antialiased bg-[#FAF3F5] text-gray-800 selection:bg-[#E8B7C4] selection:text-[#521120] notranslate" translate="no" suppressHydrationWarning>
         {children}
       </body>
     </html>

@@ -153,14 +153,14 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ autoPlay = false }) =>
   return (
     <button
       onClick={toggleMusic}
-      className={`fixed top-4 right-4 z-40 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold transition-all shadow-md backdrop-blur-md border ${isPlaying
+      className={`fixed top-3 right-3 sm:top-4 sm:right-4 z-40 flex items-center gap-1 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-bold transition-all shadow-sm backdrop-blur-md border ${isPlaying
         ? "bg-[#6B1D2F] border-[#D4AF37] text-[#FFF8E7] shadow-[0_0_12px_rgba(212,175,55,0.4)]"
         : "bg-white/80 border-[#C9A34E]/50 text-[#6B1D2F] hover:bg-white"
         }`}
       title={isPlaying ? "Mute Music" : "Play Festive Music"}
       aria-label={isPlaying ? "Mute Music" : "Play Festive Music"}
     >
-      <span className={isPlaying ? "animate-spin text-sm" : "text-sm"}>
+      <span className={isPlaying ? "animate-spin text-xs sm:text-sm" : "text-xs sm:text-sm"}>
         {isPlaying ? "🎵" : "🔇"}
       </span>
       <span className="font-tamil">இசை</span>
