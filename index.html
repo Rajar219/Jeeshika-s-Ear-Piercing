@@ -598,6 +598,117 @@
 
     </section>
 
+    <!-- Botanical Vine Connector -->
+    <div class="flex justify-center my-1 pointer-events-none">
+      <svg width="28" height="42" viewBox="0 0 32 48" fill="none">
+        <path d="M 16 0 C 13 12, 19 24, 16 48" stroke="#D4AF37" stroke-width="1.1" stroke-linecap="round" stroke-opacity="0.6"/>
+        <path d="M 15 14 C 10 11, 8 16, 12 18 C 14 17, 15 15, 15 14 Z" fill="#D4AF37" opacity="0.75"/>
+        <path d="M 17 28 C 22 25, 24 30, 20 32 C 18 31, 17 29, 17 28 Z" fill="#95A893" opacity="0.8"/>
+      </svg>
+    </div>
+
+    <!-- ========================================================
+         4. LIVE EVENT COUNTDOWN
+         ======================================================== -->
+    <section id="countdown-section" class="relative px-3.5 py-4 sm:p-6 flex flex-col items-center my-3 transition-all duration-700 opacity-100">
+      <div class="w-full max-w-[390px] luxury-glass-card px-4 py-5 sm:p-6 relative overflow-hidden text-center">
+        
+        <!-- Botanical Corner Clusters -->
+        <svg class="absolute -top-2 -right-2 pointer-events-none opacity-85 z-0" width="65" height="65" viewBox="0 0 100 100" fill="none">
+          <path d="M 95 10 C 80 15, 60 12, 45 28 C 35 38, 25 55, 10 90" stroke="#D4AF37" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+          <path d="M 75 12 C 85 8, 92 14, 88 22 C 82 20, 78 16, 75 12 Z" fill="#D4AF37" opacity="0.9"/>
+          <g transform="translate(68, 38)">
+            <circle cx="0" cy="0" r="14" fill="#E8B7C4"/>
+            <circle cx="0" cy="0" r="9" fill="#D9829B"/>
+            <circle cx="0" cy="0" r="4.5" fill="#9B3459"/>
+          </g>
+        </svg>
+
+        <svg class="absolute -bottom-2 -left-2 pointer-events-none opacity-80 z-0 transform -scale-100" width="60" height="60" viewBox="0 0 100 100" fill="none">
+          <path d="M 95 10 C 80 15, 60 12, 45 28 C 35 38, 25 55, 10 90" stroke="#D4AF37" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+          <path d="M 75 12 C 85 8, 92 14, 88 22 C 82 20, 78 16, 75 12 Z" fill="#D4AF37" opacity="0.9"/>
+          <g transform="translate(68, 38)">
+            <circle cx="0" cy="0" r="12" fill="#E8B7C4"/>
+            <circle cx="0" cy="0" r="7" fill="#D9829B"/>
+          </g>
+        </svg>
+
+        <div class="mb-4 relative z-10">
+          <div class="flex justify-center mb-1 pointer-events-none">
+            <svg width="100" height="18" viewBox="0 0 110 22" fill="none">
+              <path d="M 10 11 C 25 10, 40 14, 48 11" stroke="#D4AF37" stroke-width="0.8" stroke-linecap="round"/>
+              <path d="M 100 11 C 85 10, 70 14, 62 11" stroke="#D4AF37" stroke-width="0.8" stroke-linecap="round"/>
+              <circle cx="55" cy="10" r="3" fill="#C25E7E"/>
+              <circle cx="55" cy="10" r="1.2" fill="#FFF0F3"/>
+            </svg>
+          </div>
+          <span class="text-[10px] font-bold tracking-[0.2em] text-[#9B3459] uppercase block font-cormorant">
+            COUNTDOWN TO AUSPICIOUS MOMENT
+          </span>
+          <h3 class="text-xl sm:text-2xl font-tamil-display font-bold text-[#6B1D2F] mt-1 drop-shadow-sm">
+            சுபமுகூர்த்த நேரக் கணிப்பு
+          </h3>
+          <div class="flex items-center justify-center my-2 pointer-events-none">
+            <svg width="180" height="18" viewBox="0 0 240 28" fill="none">
+              <line x1="30" y1="14" x2="95" y2="14" stroke="#D4AF37" stroke-width="0.8" stroke-linecap="round" stroke-opacity="0.6"/>
+              <line x1="145" y1="14" x2="210" y2="14" stroke="#D4AF37" stroke-width="0.8" stroke-linecap="round" stroke-opacity="0.6"/>
+              <circle cx="120" cy="14" r="4" fill="#E8B7C4"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Zero state celebration message (shown when countdown finishes) -->
+        <div id="countdown-zero" class="hidden relative z-10 py-4 px-3 bg-gradient-to-r from-[#FFF5F7] via-white to-[#FFF5F7] border border-[#D4AF37]/60 rounded-2xl shadow-sm">
+          <span class="text-2xl block mb-1">🎉</span>
+          <h4 class="text-lg font-cormorant font-bold text-[#6B1D2F]">
+            The Celebration Begins!
+          </h4>
+          <p class="text-xs font-tamil font-bold text-[#9D174D] mt-1">
+            சுப நிகழ்வு ஆரம்பமாகிறது!
+          </p>
+        </div>
+
+        <!-- 4-Unit Grid -->
+        <div id="countdown-grid" class="relative z-10">
+          <div class="grid grid-cols-4 gap-2 sm:gap-2.5">
+            <div class="bg-gradient-to-b from-white to-[#FFF5F7] border border-[#E8D39A]/80 rounded-2xl p-2 sm:p-2.5 shadow-sm flex flex-col items-center">
+              <span id="cd-days" class="text-xl sm:text-2xl font-cormorant font-black text-[#6B1D2F] leading-none drop-shadow-sm">00</span>
+              <span class="text-[9px] font-tamil font-bold text-[#9D174D] mt-1.5 leading-none">நாட்கள்</span>
+              <span class="text-[8px] font-cormorant font-semibold text-[#8A263E] uppercase tracking-wider mt-0.5 leading-none">DAYS</span>
+            </div>
+            <div class="bg-gradient-to-b from-white to-[#FFF5F7] border border-[#E8D39A]/80 rounded-2xl p-2 sm:p-2.5 shadow-sm flex flex-col items-center">
+              <span id="cd-hours" class="text-xl sm:text-2xl font-cormorant font-black text-[#6B1D2F] leading-none drop-shadow-sm">00</span>
+              <span class="text-[9px] font-tamil font-bold text-[#9D174D] mt-1.5 leading-none">மணிகள்</span>
+              <span class="text-[8px] font-cormorant font-semibold text-[#8A263E] uppercase tracking-wider mt-0.5 leading-none">HOURS</span>
+            </div>
+            <div class="bg-gradient-to-b from-white to-[#FFF5F7] border border-[#E8D39A]/80 rounded-2xl p-2 sm:p-2.5 shadow-sm flex flex-col items-center">
+              <span id="cd-mins" class="text-xl sm:text-2xl font-cormorant font-black text-[#6B1D2F] leading-none drop-shadow-sm">00</span>
+              <span class="text-[9px] font-tamil font-bold text-[#9D174D] mt-1.5 leading-none">நிமிடங்கள்</span>
+              <span class="text-[8px] font-cormorant font-semibold text-[#8A263E] uppercase tracking-wider mt-0.5 leading-none">MINUTES</span>
+            </div>
+            <div class="bg-gradient-to-b from-white to-[#FFF5F7] border border-[#E8D39A]/80 rounded-2xl p-2 sm:p-2.5 shadow-sm flex flex-col items-center">
+              <span id="cd-secs" class="text-xl sm:text-2xl font-cormorant font-black text-[#D4AF37] leading-none drop-shadow-sm">00</span>
+              <span class="text-[9px] font-tamil font-bold text-[#9D174D] mt-1.5 leading-none">வினாடிகள்</span>
+              <span class="text-[8px] font-cormorant font-semibold text-[#8A263E] uppercase tracking-wider mt-0.5 leading-none">SECONDS</span>
+            </div>
+          </div>
+          <p class="text-[11px] font-cormorant text-[#7A2638] mt-3 font-semibold">
+            18th January 2027 • 12:00 PM
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Botanical Vine Connector -->
+    <div class="flex justify-center my-1 pointer-events-none">
+      <svg width="28" height="42" viewBox="0 0 32 48" fill="none">
+        <path d="M 16 0 C 13 12, 19 24, 16 48" stroke="#D4AF37" stroke-width="1.1" stroke-linecap="round" stroke-opacity="0.6"/>
+        <path d="M 15 14 C 10 11, 8 16, 12 18 C 14 17, 15 15, 15 14 Z" fill="#D4AF37" opacity="0.75"/>
+        <path d="M 17 28 C 22 25, 24 30, 20 32 C 18 31, 17 29, 17 28 Z" fill="#95A893" opacity="0.8"/>
+      </svg>
+    </div>
+
     <!-- ========================================================
          5. THE CELEBRATION & EVENT DETAILS
          ======================================================== -->
@@ -641,11 +752,14 @@
             </svg>
           </div>
           <span class="text-[10px] font-bold tracking-[0.2em] text-[#9B3459] uppercase block font-cormorant">
-            THE CELEBRATION
+            THE CELEBRATION & TRAVEL GUIDE
           </span>
           <h3 class="text-2xl md:text-3xl font-tamil-display font-bold text-[#6B1D2F] mt-1 drop-shadow-sm">
             செவிப்பொன் சேர்ப்பு சுப நிகழ்வு
           </h3>
+          <p class="text-[11px] font-tamil font-semibold text-[#8A263E] mt-0.5">
+            பயண & இட வழிகாட்டல் • Venue & Travel Guide
+          </p>
           <div class="flex items-center justify-center my-2 pointer-events-none">
             <svg width="200" height="20" viewBox="0 0 240 28" fill="none">
               <line x1="20" y1="14" x2="95" y2="14" stroke="#D4AF37" stroke-width="0.9" stroke-linecap="round" stroke-opacity="0.7"/>
@@ -684,17 +798,27 @@
             </div>
           </div>
 
-          <!-- Venue with Pictorial Temple Representation -->
+          <!-- Venue & Location Guide with Pictorial Temple Representation -->
           <div class="bg-gradient-to-r from-[#FFF5F7] via-white to-[#FFF5F7] p-3.5 rounded-2xl border border-[#E8D39A]/75 shadow-sm space-y-3">
             <div class="flex items-start gap-3">
               <span class="text-2xl mt-0.5">🛕</span>
-              <div>
-                <span class="font-bold text-[#6B1D2F] block font-tamil-display text-[14px] leading-snug">
-                  ஶ்ரீ அங்காளபரமேஸ்வரி கோவில், கொக்கலை, மரப்பாறை, தமிழ்நாடு – 637410
+              <div class="flex-1">
+                <span class="font-bold text-[#6B1D2F] block font-tamil-display text-[15px] leading-snug">
+                  ஶ்ரீ அங்காளபரமேஸ்வரி கோவில்
                 </span>
                 <span class="font-cormorant font-bold text-xs text-[#9D174D] block mt-0.5">
-                  Sri Angalaparameshwari Temple, Kokkalai, Marapparai, Tamil Nadu – 637410
+                  Sri Angalaparameshwari Temple
                 </span>
+
+                <!-- Complete Address Display -->
+                <div class="mt-1.5 pt-1.5 border-t border-[#E8D39A]/50">
+                  <span class="font-tamil text-[12px] text-[#6B1D2F] block leading-relaxed">
+                    📍 கொக்கலை, மரப்பாறை, தமிழ்நாடு – 637410
+                  </span>
+                  <span class="font-cormorant text-[11px] text-[#7A2638] block mt-0.5">
+                    Kokkalai, Marapparai, Tamil Nadu – 637410
+                  </span>
+                </div>
               </div>
             </div>
 
@@ -719,23 +843,24 @@
 
         </div>
 
-        <!-- Action Buttons: Google Maps & Add to Calendar -->
-        <div class="mt-5 flex gap-2 relative z-10">
+        <!-- Action Buttons: Premium Google Maps Directions & Add to Calendar -->
+        <div class="mt-5 space-y-2.5 relative z-10 w-full">
           <a
             href="https://maps.app.goo.gl/k1Wv231imacHNNiY9?g_st=aw"
             target="_blank"
             rel="noopener noreferrer"
-            class="flex-1 bg-gradient-to-r from-[#1A73E8] to-[#1557B0] hover:from-[#1557B0] hover:to-[#0D47A1] text-white font-bold py-2.5 px-3 rounded-xl shadow-md text-xs flex items-center justify-center gap-1.5 transition font-tamil-body"
+            aria-label="Open Directions in Google Maps"
+            class="w-full min-h-[44px] bg-gradient-to-r from-[#1A73E8] via-[#1557B0] to-[#0D47A1] hover:from-[#1557B0] hover:to-[#0D47A1] text-white font-bold py-2.5 px-4 rounded-xl shadow-[0_4px_14px_rgba(26,115,232,0.35)] text-xs sm:text-sm flex items-center justify-center gap-2 transition-transform duration-200 active:scale-[0.98] font-tamil-body"
           >
-            <span>📍</span>
-            <span>Google Maps வழிகாட்டல்</span>
+            <span class="text-base">🧭</span>
+            <span>Google Maps வழிகாட்டல் • GET DIRECTIONS</span>
           </a>
           <button
             id="btn-add-calendar"
-            class="flex-1 bg-gradient-to-r from-[#6B1D2F] via-[#8A263E] to-[#6B1D2F] hover:from-[#521120] hover:to-[#6B1D2F] text-[#FFF8E7] border border-[#D4AF37]/50 font-bold py-2.5 px-3 rounded-xl shadow-md text-xs flex items-center justify-center gap-1.5 transition font-tamil-body"
+            class="w-full min-h-[42px] bg-gradient-to-r from-[#6B1D2F] via-[#8A263E] to-[#6B1D2F] hover:from-[#521120] hover:to-[#6B1D2F] text-[#FFF8E7] border border-[#D4AF37]/50 font-bold py-2 px-4 rounded-xl shadow-md text-xs flex items-center justify-center gap-2 transition-transform duration-200 active:scale-[0.98] font-tamil-body"
           >
             <span>📅</span>
-            <span>காலெண்டரில் சேர்க்க</span>
+            <span>காலெண்டரில் சேர்க்க • ADD TO CALENDAR</span>
           </button>
         </div>
 
@@ -1098,6 +1223,7 @@
           </g>
         </svg>
 
+        <!-- Sacred Auspicious Crest & Heart Medallion -->
         <div class="relative z-10">
           <div class="flex justify-center mb-1 pointer-events-none">
             <svg width="100" height="18" viewBox="0 0 110 22" fill="none">
@@ -1106,18 +1232,19 @@
               <circle cx="55" cy="10" r="3" fill="#C25E7E"/>
             </svg>
           </div>
-          <div class="w-12 h-12 mx-auto rounded-full bg-gradient-to-tr from-[#996515] via-[#D4AF37] to-[#FFF2A6] flex items-center justify-center text-[#521120] text-xl shadow-md my-3">
+          <div class="w-11 h-11 mx-auto rounded-full bg-gradient-to-tr from-[#996515] via-[#D4AF37] to-[#FFF2A6] flex items-center justify-center text-[#521120] text-lg shadow-[0_4px_12px_rgba(212,175,55,0.4)] my-2.5">
             ❤️
           </div>
         </div>
 
+        <!-- Section Heading: With Love & Blessings -->
         <div class="relative z-10">
-          <h4 class="text-sm font-cormorant font-black tracking-widest text-[#6B1D2F] uppercase">
-            BLESSED ❤️ CHERISHED ❤️ ALWAYS LOVED
-          </h4>
-          <p class="text-[13px] font-tamil-display font-bold text-[#9D174D] mt-1.5 flex items-center justify-center gap-1.5">
-            <span>🛕</span> <span>18.01.2027 • கொக்கலை, மரப்பாறை</span>
-          </p>
+          <span class="text-[10px] font-bold tracking-[0.2em] text-[#9B3459] uppercase block font-cormorant">
+            WITH LOVE & BLESSINGS
+          </span>
+          <h3 class="text-xl sm:text-2xl font-tamil-display font-bold text-[#6B1D2F] mt-1 drop-shadow-sm">
+            அன்பும் ஆசிகளும்
+          </h3>
           <div class="flex items-center justify-center my-2 pointer-events-none">
             <svg width="180" height="18" viewBox="0 0 240 28" fill="none">
               <line x1="30" y1="14" x2="95" y2="14" stroke="#D4AF37" stroke-width="0.8" stroke-linecap="round" stroke-opacity="0.6"/>
@@ -1125,6 +1252,37 @@
               <circle cx="120" cy="14" r="4" fill="#E8B7C4"/>
             </svg>
           </div>
+        </div>
+
+        <!-- Heartfelt Thank You Message -->
+        <div class="relative z-10 py-2 px-1 space-y-2">
+          <p class="text-[13px] sm:text-[14px] font-tamil font-semibold text-[#6B1D2F] leading-relaxed drop-shadow-xs">
+            "தங்களின் மேலான வருகையும் நல்லாசிகளும் எங்கள் செல்வி ஜீஷிகாவின் இந்த இனிய விழாவை மேலும் சிறப்படையச் செய்யும்."
+          </p>
+          <p class="text-[11px] sm:text-[12px] font-cormorant italic text-[#8A263E] leading-normal font-medium">
+            "Your presence and blessings make Baby Jeeshika's special day even more beautiful."
+          </p>
+        </div>
+
+        <!-- Closing Signature -->
+        <div class="relative z-10 mt-3 pt-3 border-t border-[#E8D39A]/60">
+          <span class="text-[11px] font-cormorant uppercase tracking-wider text-[#9B3459] block font-semibold">
+            With Love,
+          </span>
+          <h4 class="text-base sm:text-lg font-cormorant font-bold text-[#6B1D2F] mt-0.5">
+            Baby Jeeshika & Family
+          </h4>
+          <p class="text-[12px] font-tamil font-bold text-[#9D174D] mt-0.5">
+            அன்புடன், பேபி. ஜீஷிகா & குடும்பத்தினர்
+          </p>
+        </div>
+
+        <div class="flex items-center justify-center my-2 pointer-events-none">
+          <svg width="180" height="18" viewBox="0 0 240 28" fill="none">
+            <line x1="30" y1="14" x2="95" y2="14" stroke="#D4AF37" stroke-width="0.8" stroke-linecap="round" stroke-opacity="0.6"/>
+            <line x1="145" y1="14" x2="210" y2="14" stroke="#D4AF37" stroke-width="0.8" stroke-linecap="round" stroke-opacity="0.6"/>
+            <circle cx="120" cy="14" r="4" fill="#E8B7C4"/>
+          </svg>
         </div>
 
         <!-- Buttons: WhatsApp Share & Replay Intro -->
@@ -1770,73 +1928,165 @@
         requestAnimationFrame(runCelebration);
       }
 
-      // 7. Ambient Particle Canvas (Gold Dust & Petals)
+      // Live Countdown Timer Logic
+      const cdDays = document.getElementById('cd-days');
+      const cdHours = document.getElementById('cd-hours');
+      const cdMins = document.getElementById('cd-mins');
+      const cdSecs = document.getElementById('cd-secs');
+      const cdGrid = document.getElementById('countdown-grid');
+      const cdZero = document.getElementById('countdown-zero');
+      const targetCountdownDate = new Date('2027-01-18T12:00:00+05:30').getTime();
+
+      function updateCountdown() {
+        const now = Date.now();
+        const diff = targetCountdownDate - now;
+        if (diff <= 0) {
+          if (cdGrid) cdGrid.classList.add('hidden');
+          if (cdZero) cdZero.classList.remove('hidden');
+          return;
+        }
+        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const m = Math.floor((diff / (1000 * 60)) % 60);
+        const s = Math.floor((diff / 1000) % 60);
+
+        if (cdDays) cdDays.textContent = String(d).padStart(2, '0');
+        if (cdHours) cdHours.textContent = String(h).padStart(2, '0');
+        if (cdMins) cdMins.textContent = String(m).padStart(2, '0');
+        if (cdSecs) cdSecs.textContent = String(s).padStart(2, '0');
+      }
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+
+      // 7. Ambient Particle Canvas (Floating Petals & Soft Gold Shimmer)
       if (canvas) {
+        // Respect user's prefers-reduced-motion setting
+        const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) return;
+
         const ctx = canvas.getContext('2d');
         function resizeCanvas() {
-          canvas.width = window.innerWidth;
+          canvas.width = Math.min(window.innerWidth, 430);
           canvas.height = window.innerHeight;
         }
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
 
-        class Sparkle {
+        // Soft Gold Floating Particle (drifts gently downwards)
+        class GoldParticle {
           constructor() { this.reset(true); }
           reset(init = false) {
             this.x = Math.random() * canvas.width;
-            this.y = init ? Math.random() * canvas.height : canvas.height + 10;
-            this.radius = Math.random() * 2 + 0.8;
-            this.speedY = Math.random() * 0.5 + 0.2;
-            this.alpha = Math.random() * 0.7 + 0.2;
+            this.y = init ? Math.random() * canvas.height : -10;
+            this.radius = Math.random() * 1.8 + 0.8;
+            this.speedY = Math.random() * 0.4 + 0.2;
+            this.swayAngle = Math.random() * Math.PI * 2;
+            this.swaySpeed = Math.random() * 0.02 + 0.01;
+            this.baseAlpha = Math.random() * 0.4 + 0.35;
+            this.alpha = this.baseAlpha;
           }
           update() {
-            this.y -= this.speedY;
-            if (this.y < -10) this.reset(false);
+            this.y += this.speedY;
+            this.swayAngle += this.swaySpeed;
+            this.x += Math.sin(this.swayAngle) * 0.5;
+            this.alpha = this.baseAlpha + 0.25 * Math.sin(this.swayAngle * 2.5);
+            if (this.y > canvas.height + 15 || this.x < -15 || this.x > canvas.width + 15) this.reset(false);
           }
-          draw() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(212, 175, 55, ${this.alpha})`;
-            ctx.fill();
+          draw(c) {
+            c.save();
+            c.beginPath();
+            c.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            c.fillStyle = `rgba(212, 175, 55, ${Math.max(0.1, Math.min(1, this.alpha))})`;
+            c.shadowColor = '#D4AF37';
+            c.shadowBlur = 5;
+            c.fill();
+            c.restore();
           }
         }
 
+        // Realistic Floating Petal (light pink, ivory white, blush rose tones)
         class Petal {
           constructor() { this.reset(true); }
           reset(init = false) {
             this.x = Math.random() * canvas.width;
-            this.y = init ? Math.random() * canvas.height : -20;
-            this.size = Math.random() * 10 + 8;
-            this.speedY = Math.random() * 0.8 + 0.4;
+            this.y = init ? Math.random() * canvas.height : -25;
+            this.size = Math.random() * 8 + 8;
+            this.speedY = Math.random() * 0.6 + 0.4;
+            this.speedX = Math.random() * 0.4 - 0.2;
             this.rotation = Math.random() * Math.PI * 2;
+            this.rotationSpeed = (Math.random() - 0.5) * 0.02;
             this.flip = Math.random() * Math.PI * 2;
+            this.flipSpeed = Math.random() * 0.025 + 0.01;
+            this.opacity = Math.random() * 0.3 + 0.55;
+
+            const r = Math.random();
+            this.theme = r < 0.5 ? 'lightPink' : r < 0.8 ? 'ivoryWhite' : 'blushRose';
           }
           update() {
             this.y += this.speedY;
-            this.rotation += 0.01;
-            this.flip += 0.02;
-            if (this.y > canvas.height + 20) this.reset(false);
+            this.x += this.speedX + Math.sin(this.flip) * 0.5;
+            this.rotation += this.rotationSpeed;
+            this.flip += this.flipSpeed;
+            if (this.y > canvas.height + 30) this.reset(false);
           }
-          draw() {
-            ctx.save();
-            ctx.translate(this.x, this.y);
-            ctx.rotate(this.rotation);
-            ctx.scale(Math.cos(this.flip), 1);
-            ctx.beginPath();
-            ctx.arc(0, 0, this.size, 0, Math.PI);
-            ctx.fillStyle = 'rgba(250, 210, 225, 0.7)';
-            ctx.fill();
-            ctx.restore();
+          draw(c) {
+            c.save();
+            c.translate(this.x, this.y);
+            c.rotate(this.rotation);
+            c.scale(Math.cos(this.flip), 1);
+            c.globalAlpha = this.opacity;
+
+            c.beginPath();
+            c.moveTo(0, -this.size * 0.75);
+            c.bezierCurveTo(this.size * 0.55, -this.size * 0.5, this.size * 0.7, this.size * 0.45, 0, this.size * 0.85);
+            c.bezierCurveTo(-this.size * 0.7, this.size * 0.45, -this.size * 0.55, -this.size * 0.5, 0, -this.size * 0.75);
+            c.closePath();
+
+            const grad = c.createLinearGradient(0, -this.size, 0, this.size);
+            if (this.theme === 'ivoryWhite') {
+              grad.addColorStop(0, '#FFFFFF');
+              grad.addColorStop(0.7, '#FFFDF8');
+              grad.addColorStop(1, '#FCE7ED');
+            } else if (this.theme === 'blushRose') {
+              grad.addColorStop(0, '#FFCCD5');
+              grad.addColorStop(0.6, '#F8BBD0');
+              grad.addColorStop(1, '#F06292');
+            } else {
+              grad.addColorStop(0, '#FFF0F4');
+              grad.addColorStop(0.5, '#FFD6E0');
+              grad.addColorStop(1, '#F7A8B8');
+            }
+            c.fillStyle = grad;
+            c.fill();
+
+            c.beginPath();
+            c.moveTo(0, -this.size * 0.5);
+            c.quadraticCurveTo(this.size * 0.05, 0, 0, this.size * 0.6);
+            c.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+            c.lineWidth = 0.6;
+            c.stroke();
+
+            c.restore();
           }
         }
 
-        const sparkles = Array.from({ length: 16 }, () => new Sparkle());
-        const petals = Array.from({ length: 8 }, () => new Petal());
+        const isMobile = window.innerWidth < 640;
+        const petalCount = isMobile ? 7 : 12;
+        const goldCount = isMobile ? 6 : 10;
+
+        const petals = Array.from({ length: petalCount }, () => new Petal());
+        const goldParticles = Array.from({ length: goldCount }, () => new GoldParticle());
 
         function anim() {
           ctx.clearRect(0, 0, canvas.width, canvas.height);
-          sparkles.forEach(s => { s.update(); s.draw(); });
-          petals.forEach(p => { p.update(); p.draw(); });
+          for (let i = 0; i < petals.length; i++) {
+            petals[i].update();
+            petals[i].draw(ctx);
+          }
+          for (let i = 0; i < goldParticles.length; i++) {
+            goldParticles[i].update();
+            goldParticles[i].draw(ctx);
+          }
           requestAnimationFrame(anim);
         }
         anim();

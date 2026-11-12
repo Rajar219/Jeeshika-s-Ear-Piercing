@@ -61,8 +61,12 @@ export const INVITATION_CONFIG = {
     ],
     englishWelcome: "We warmly invite you and your family to the Ear Piercing Ceremony of our beloved daughter.",
     tamilWelcome: "எங்கள் அன்பு மகளின் செவிப்பொன் சேர்ப்பு விழாவிற்கு குடும்பத்துடன் வருகை தந்து வாழ்த்தி சிறப்பிக்குமாறு அன்புடன் கேட்டுக்கொள்கிறோம்.",
-    closingMotto: "BLESSED ❤️ CHERISHED ❤️ ALWAYS LOVED",
-    tamilClosingMotto: "🛕 18.01.2027 • கொக்கலை, மரப்பாறை",
+    closingMotto: "WITH LOVE & BLESSINGS",
+    tamilClosingMotto: "அன்பும் ஆசிகளும்",
+    thankYouText: "Your presence and blessings make Baby Jeeshika's special day even more beautiful.",
+    tamilThankYouText: "தங்களின் மேலான வருகையும் நல்லாசிகளும் எங்கள் செல்வி ஜீஷிகாவின் இந்த இனிய விழாவை மேலும் சிறப்படையச் செய்யும்.",
+    signature: "Baby Jeeshika & Family",
+    tamilSignature: "பேபி. ஜீஷிகா & குடும்பத்தினர்",
   },
 
   // 4. Scratch Section

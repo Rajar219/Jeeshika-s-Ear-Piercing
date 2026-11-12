@@ -43,11 +43,14 @@ export const EventDetailsSection: React.FC = () => {
         <div className="text-center mb-5 relative z-10">
           <FloralCardCrest />
           <span className="text-[10px] font-bold tracking-[0.2em] text-[#9B3459] uppercase block font-serif">
-            THE CELEBRATION
+            THE CELEBRATION & TRAVEL GUIDE
           </span>
           <h3 className="text-2xl md:text-3xl font-tamil-title font-bold text-[#6B1D2F] mt-1 drop-shadow-sm">
             செவிப்பொன் சேர்ப்பு சுப நிகழ்வு
           </h3>
+          <p className="text-[11px] font-tamil font-semibold text-[#8A263E] mt-0.5">
+            பயண & இட வழிகாட்டல் • Venue & Travel Guide
+          </p>
           <FloralHeaderDivider className="my-2" />
         </div>
 
@@ -80,17 +83,27 @@ export const EventDetailsSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Venue with Pictorial Temple Representation */}
+          {/* Venue & Location Guide with Pictorial Temple Representation */}
           <div className="bg-gradient-to-r from-[#FFF5F7] via-white to-[#FFF5F7] p-3.5 rounded-2xl border border-[#E8D39A]/75 shadow-sm space-y-3">
             <div className="flex items-start gap-3">
               <span className="text-2xl mt-0.5">🛕</span>
-              <div>
-                <span className="font-bold text-[#6B1D2F] block font-tamil text-[14px] leading-snug">
-                  {INVITATION_CONFIG.event.tamilFullVenueDisplay}
+              <div className="flex-1">
+                <span className="font-bold text-[#6B1D2F] block font-tamil text-[15px] leading-snug">
+                  {INVITATION_CONFIG.event.tamilVenueName}
                 </span>
                 <span className="font-serif font-bold text-xs text-[#9D174D] block mt-0.5">
-                  {INVITATION_CONFIG.event.fullVenueDisplay}
+                  {INVITATION_CONFIG.event.venueName}
                 </span>
+                
+                {/* Complete Address Display */}
+                <div className="mt-1.5 pt-1.5 border-t border-[#E8D39A]/50">
+                  <span className="font-tamil text-[12px] text-[#6B1D2F] block leading-relaxed">
+                    📍 {INVITATION_CONFIG.event.tamilVenueLocation}
+                  </span>
+                  <span className="font-serif text-[11px] text-[#7A2638] block mt-0.5">
+                    {INVITATION_CONFIG.event.venueLocation}
+                  </span>
+                </div>
               </div>
             </div>
 
@@ -115,24 +128,25 @@ export const EventDetailsSection: React.FC = () => {
 
         </div>
 
-        {/* Action Buttons: Google Maps & Add to Calendar */}
-        <div className="mt-5 flex gap-2 relative z-10">
+        {/* Action Buttons: Premium Google Maps Directions & Add to Calendar */}
+        <div className="mt-5 space-y-2.5 relative z-10 w-full">
           <a
             href={INVITATION_CONFIG.event.googleMapsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 bg-gradient-to-r from-[#1A73E8] to-[#1557B0] hover:from-[#1557B0] hover:to-[#0D47A1] text-white font-bold py-2.5 px-3 rounded-xl shadow-md text-xs flex items-center justify-center gap-1.5 transition font-tamil"
+            aria-label="Open Directions in Google Maps"
+            className="w-full min-h-[44px] bg-gradient-to-r from-[#1A73E8] via-[#1557B0] to-[#0D47A1] hover:from-[#1557B0] hover:to-[#0D47A1] text-white font-bold py-2.5 px-4 rounded-xl shadow-[0_4px_14px_rgba(26,115,232,0.35)] text-xs sm:text-sm flex items-center justify-center gap-2 transition-transform duration-200 active:scale-[0.98] font-tamil"
           >
-            <span>📍</span>
-            <span>Google Maps வழிகாட்டல்</span>
+            <span className="text-base">🧭</span>
+            <span>Google Maps வழிகாட்டல் • GET DIRECTIONS</span>
           </a>
 
           <button
             onClick={downloadIcs}
-            className="flex-1 bg-gradient-to-r from-[#6B1D2F] via-[#8A263E] to-[#6B1D2F] hover:from-[#521120] hover:to-[#6B1D2F] text-[#FFF8E7] border border-[#D4AF37]/50 font-bold py-2.5 px-3 rounded-xl shadow-md text-xs flex items-center justify-center gap-1.5 transition font-tamil"
+            className="w-full min-h-[42px] bg-gradient-to-r from-[#6B1D2F] via-[#8A263E] to-[#6B1D2F] hover:from-[#521120] hover:to-[#6B1D2F] text-[#FFF8E7] border border-[#D4AF37]/50 font-bold py-2 px-4 rounded-xl shadow-md text-xs flex items-center justify-center gap-2 transition-transform duration-200 active:scale-[0.98] font-tamil"
           >
             <span>📅</span>
-            <span>காலெண்டரில் சேர்க்க</span>
+            <span>காலெண்டரில் சேர்க்க • ADD TO CALENDAR</span>
           </button>
         </div>
 

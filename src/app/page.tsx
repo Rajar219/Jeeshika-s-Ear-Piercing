@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { IntroScreen } from "@/components/IntroScreen";
 import { HeroSection } from "@/components/HeroSection";
 import { ScratchToReveal } from "@/components/ScratchToReveal";
+import { CountdownSection } from "@/components/CountdownSection";
 import { FullPageCelebration } from "@/components/FullPageCelebration";
 import { EventDetailsSection } from "@/components/EventDetailsSection";
 import { VerseSection } from "@/components/VerseSection";
@@ -117,6 +118,11 @@ export default function Home() {
 
           {/* 3. Scratch to Reveal Date Section */}
           <ScratchToReveal onCelebrationTrigger={handleScratchSuccess} />
+
+          <BotanicalVineConnector />
+
+          {/* 4. Live Event Countdown */}
+          <CountdownSection />
 
           <BotanicalVineConnector />
 
