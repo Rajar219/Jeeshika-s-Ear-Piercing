@@ -23,7 +23,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ autoPlay = false }) =>
       try {
         audio.pause();
         audio.currentTime = 0;
-        audio.volume = 0.35;
+        audio.volume = 0.25;
       } catch (_) { }
     }
     // Prevent autoPlay from automatically resuming when returning to the app
@@ -38,7 +38,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ autoPlay = false }) =>
       audio = new Audio("/audio 2.mp3");
       audio.loop = true;
       audio.preload = "auto";
-      try { audio.volume = 0.35; } catch (_) { }
+      try { audio.volume = 0.25; } catch (_) { }
       audioRef.current = audio;
     } catch (e) {
       console.warn("Audio 2 init error:", e);
@@ -94,8 +94,8 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ autoPlay = false }) =>
 
       audio.play().then(() => {
         setIsPlaying(true);
-        // Smooth crossfade: ramp volume from 0 to 0.35 over 1800ms
-        const targetVol = 0.35;
+        // Smooth crossfade: ramp volume from 0 to 0.25 over 1800ms
+        const targetVol = 0.25;
         const steps = 30;
         const stepTime = 60; // 1800ms total
         let step = 0;
@@ -141,7 +141,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ autoPlay = false }) =>
       } catch (_) { }
       setIsPlaying(false);
     } else {
-      audio.volume = 0.35;
+      audio.volume = 0.25;
       audio.play().then(() => {
         setIsPlaying(true);
       }).catch((e) => {

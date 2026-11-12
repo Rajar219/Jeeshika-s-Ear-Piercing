@@ -1170,8 +1170,8 @@
       const audioBgm = document.getElementById('audio-bgm');
 
       // Soften volumes for gentle celebratory ambiance
-      if (audioSeal) audioSeal.volume = 0.4;
-      if (audioBgm) audioBgm.volume = 0.35;
+      if (audioSeal) audioSeal.volume = 0.3;
+      if (audioBgm) audioBgm.volume = 0.25;
       const canvas = document.getElementById('particle-canvas');
       const celebrationCanvas = document.getElementById('celebration-canvas');
       const scratchCanvas = document.getElementById('scratch-canvas');
@@ -1185,7 +1185,7 @@
       let audioFadeInInterval = null;
       let audioGapTimer = null;
 
-      function fadeOutAudio(audio, durationMs = 1000, defaultVol = 0.4) {
+      function fadeOutAudio(audio, durationMs = 1000, defaultVol = 0.3) {
         if (!audio) return;
         if (audioFadeOutInterval) clearInterval(audioFadeOutInterval);
         const steps = 20;
@@ -1206,7 +1206,7 @@
         }, intervalTime);
       }
 
-      function fadeInAudio(audio, durationMs = 1500, targetVol = 0.35) {
+      function fadeInAudio(audio, durationMs = 1500, targetVol = 0.25) {
         if (!audio) return;
         if (audioFadeInInterval) clearInterval(audioFadeInInterval);
         audio.volume = 0;
@@ -1290,7 +1290,7 @@
         if (audioGapTimer) clearTimeout(audioGapTimer);
         audioGapTimer = setTimeout(() => {
           if (!document.hidden && document.visibilityState === 'visible') {
-            fadeInAudio(audioBgm, 1500, 0.35);
+            fadeInAudio(audioBgm, 1500, 0.25);
           }
           audioGapTimer = null;
         }, 2500);
@@ -1327,14 +1327,14 @@
           }
           if (audioBgm) {
             audioBgm.pause();
-            audioBgm.volume = 0.35;
+            audioBgm.volume = 0.25;
             isMusicPlaying = false;
             if (audioIcon) audioIcon.textContent = '🔇';
           }
           if (audioSeal) {
             audioSeal.pause();
             audioSeal.currentTime = 0;
-            audioSeal.volume = 0.4;
+            audioSeal.volume = 0.3;
           }
           const heroVideo = document.getElementById('heroVideo');
           if (heroVideo) {
@@ -1390,7 +1390,7 @@
           try {
             audioBgm.pause();
             audioBgm.currentTime = 0;
-            audioBgm.volume = 0.35;
+            audioBgm.volume = 0.25;
           } catch (_) {}
           isMusicPlaying = false;
           if (audioIcon) audioIcon.textContent = '🔇';
@@ -1399,7 +1399,7 @@
           try {
             audioSeal.pause();
             audioSeal.currentTime = 0;
-            audioSeal.volume = 0.4;
+            audioSeal.volume = 0.3;
           } catch (_) {}
         }
       }
@@ -1426,7 +1426,7 @@
               clearInterval(audioFadeInInterval);
               audioFadeInInterval = null;
             }
-            audioBgm.volume = 0.35;
+            audioBgm.volume = 0.25;
             audioBgm.play().then(() => {
               isMusicPlaying = true;
               audioIcon.textContent = '🔊';
