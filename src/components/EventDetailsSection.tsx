@@ -80,16 +80,36 @@ export const EventDetailsSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Venue */}
-          <div className="bg-gradient-to-r from-[#FFF5F7] via-white to-[#FFF5F7] p-3.5 rounded-2xl border border-[#E8D39A]/75 shadow-sm flex items-start gap-3">
-            <span className="text-2xl mt-0.5">🛕</span>
-            <div>
-              <span className="font-bold text-[#6B1D2F] block font-tamil text-[14px] leading-snug">
-                {INVITATION_CONFIG.event.tamilFullVenueDisplay}
-              </span>
-              <span className="font-serif font-bold text-xs text-[#9D174D] block mt-0.5">
-                {INVITATION_CONFIG.event.fullVenueDisplay}
-              </span>
+          {/* Venue with Pictorial Temple Representation */}
+          <div className="bg-gradient-to-r from-[#FFF5F7] via-white to-[#FFF5F7] p-3.5 rounded-2xl border border-[#E8D39A]/75 shadow-sm space-y-3">
+            <div className="flex items-start gap-3">
+              <span className="text-2xl mt-0.5">🛕</span>
+              <div>
+                <span className="font-bold text-[#6B1D2F] block font-tamil text-[14px] leading-snug">
+                  {INVITATION_CONFIG.event.tamilFullVenueDisplay}
+                </span>
+                <span className="font-serif font-bold text-xs text-[#9D174D] block mt-0.5">
+                  {INVITATION_CONFIG.event.fullVenueDisplay}
+                </span>
+              </div>
+            </div>
+
+            {/* Pictorial Temple Representation */}
+            <div className="relative w-full rounded-xl overflow-hidden border border-[#D4AF37]/50 shadow-[0_4px_14px_rgba(107,29,47,0.08)] bg-[#FFFDF9] group">
+              <img 
+                src="/temple_illustration.jpg" 
+                alt="Sri Angalaparameshwari Temple" 
+                className="w-full h-auto object-cover max-h-[220px] transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+              />
+              <div className="bg-gradient-to-t from-[#521120]/95 via-[#6B1D2F]/80 to-transparent p-2.5 pt-6 absolute bottom-0 inset-x-0 text-center">
+                <span className="text-[12px] font-tamil font-bold text-[#FFF8E7] drop-shadow-md block">
+                  🛕 ஶ்ரீ அங்காளபரமேஸ்வரி திருக்கோவில்
+                </span>
+                <span className="text-[10px] font-serif font-bold tracking-wider text-[#E8D39A] uppercase block mt-0.5">
+                  Kokkalai, Marapparai • Tamil Nadu
+                </span>
+              </div>
             </div>
           </div>
 
