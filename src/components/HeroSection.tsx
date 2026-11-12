@@ -136,10 +136,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ active = true }) => {
         {/* Refined Botanical Floral Divider */}
         <FloralHeaderDivider className="my-2" />
 
-        {/* Warm Supporting Message (Noto Sans Tamil 500) */}
-        <div className="bg-gradient-to-r from-white/95 via-[#FFF8FA]/95 to-white/95 border border-[#D4AF37]/45 rounded-2xl px-4 py-3 shadow-[0_4px_16px_rgba(212,175,55,0.1)] mt-1">
+        {/* Warm Supporting Message with Premium Glassmorphism (Noto Sans Tamil 500) */}
+        <div 
+          className="relative bg-white/45 backdrop-blur-md border border-white/80 rounded-2xl px-4 py-2.5 sm:px-5 sm:py-3 shadow-[0_8px_24px_rgba(107,29,47,0.08),inset_0_1px_1px_rgba(255,255,255,0.9),0_0_0_1px_rgba(212,175,55,0.22)] mt-1.5 max-w-[340px] sm:max-w-[360px] mx-auto"
+          style={{
+            backdropFilter: "blur(12px)",
+            WebkitBackdropFilter: "blur(12px)",
+          }}
+        >
           <p 
-            className="text-xs md:text-[13px] font-medium text-[#521120] leading-relaxed"
+            className="text-[11px] sm:text-[11.5px] md:text-xs font-medium text-[#521120] leading-[1.65]"
             style={{ fontFamily: "'Noto Sans Tamil', 'JeeshikaTamil', sans-serif", fontWeight: 500, letterSpacing: "normal" }}
           >
             "{INVITATION_CONFIG.baby.homepageMessage}"
