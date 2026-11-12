@@ -122,10 +122,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ active = true }) => {
           {INVITATION_CONFIG.baby.tamilTitle}
         </h1>
 
-        {/* Supporting text: எங்கள் அன்பு மகள் (Noto Sans Tamil 600) */}
+        {/* Supporting text: எங்கள் அன்பு மகள் (Stylish Classical Festive Tamil Serif) */}
         <p 
-          className="text-xs font-semibold text-[#7A2638] mt-2.5"
-          style={{ fontFamily: "'Noto Sans Tamil', 'JeeshikaTamil', sans-serif", fontWeight: 600, letterSpacing: "normal" }}
+          className="text-[13px] sm:text-[14px] font-bold text-[#7A2638] mt-2.5"
+          style={{ fontFamily: "'JeeshikaMarutham', 'Anek Tamil', serif", letterSpacing: "normal" }}
         >
           {INVITATION_CONFIG.baby.tamilSubtitle}
         </p>
@@ -136,7 +136,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ active = true }) => {
         {/* Refined Botanical Floral Divider */}
         <FloralHeaderDivider className="my-2" />
 
-        {/* Warm Supporting Message with Premium Glassmorphism (Noto Sans Tamil 500) */}
+        {/* Warm Supporting Message with Premium Glassmorphism (Stylish Classical Festive Tamil Serif) */}
         <div 
           className="relative bg-white/45 backdrop-blur-md border border-white/80 rounded-2xl px-4 py-2.5 sm:px-5 sm:py-3 shadow-[0_8px_24px_rgba(107,29,47,0.08),inset_0_1px_1px_rgba(255,255,255,0.9),0_0_0_1px_rgba(212,175,55,0.22)] mt-1.5 max-w-[340px] sm:max-w-[360px] mx-auto"
           style={{
@@ -145,8 +145,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ active = true }) => {
           }}
         >
           <p 
-            className="text-[11px] sm:text-[11.5px] md:text-xs font-medium text-[#521120] leading-[1.65]"
-            style={{ fontFamily: "'Noto Sans Tamil', 'JeeshikaTamil', sans-serif", fontWeight: 500, letterSpacing: "normal" }}
+            className="text-[11px] sm:text-[11.5px] md:text-xs font-medium text-[#521120] leading-[1.7]"
+            style={{ fontFamily: "'JeeshikaMarutham', 'Anek Tamil', serif", letterSpacing: "normal" }}
           >
             "{INVITATION_CONFIG.baby.homepageMessage}"
           </p>
